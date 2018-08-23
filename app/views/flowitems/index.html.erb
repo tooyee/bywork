@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flowitems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Unititem</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Remarks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flowitems.each do |flowitem| %>
+      <tr>
+        <td><%= flowitem.unititem.name %></td>
+        <td><%= flowitem.code %></td>
+        <td><%= flowitem.name %></td>
+        <td><%= flowitem.remarks %></td>
+        <td><%= link_to 'Show', flowitem %></td>
+        <td><%= link_to 'Edit', edit_flowitem_path(flowitem) %></td>
+        <td><%= link_to 'Destroy', flowitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flowitem', new_flowitem_path %>

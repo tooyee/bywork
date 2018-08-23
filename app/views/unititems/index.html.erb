@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Unititems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unititems.each do |unititem| %>
+      <tr>
+        <td><%= unititem.code %></td>
+        <td><%= unititem.name %></td>
+        <td><%= link_to 'Show', unititem %></td>
+        <td><%= link_to 'Edit', edit_unititem_path(unititem) %></td>
+        <td><%= link_to 'Destroy', unititem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Unititem', new_unititem_path %>

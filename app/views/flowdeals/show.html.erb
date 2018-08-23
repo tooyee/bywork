@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Flowitem:</strong>
+  <%= @flowdeal.flowitem.unititem.name %>
+</p>
+
+<p>
+  <strong>Unitdeal:</strong>
+  <%= @flowdeal.unitdeal.name %>
+</p>
+
+<p>
+  <strong>Dealtype:</strong>
+  <%= @flowdeal.dealtype %>
+</p>
+
+<p>
+  <strong>Floworderid:</strong>
+  <%= @flowdeal.floworderid %>
+</p>
+
+<p>
+  <strong>Flowtype:</strong>
+  <%= @flowdeal.flowtype %>
+</p>
+
+<%= link_to 'Edit', edit_flowdeal_path(@flowdeal) %> |
+<%= link_to 'Back', flowdeals_path %>

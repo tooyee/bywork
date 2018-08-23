@@ -1,0 +1,37 @@
+<%= form_with(model: flowitem, local: true) do |form| %>
+  <% if flowitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flowitem.errors.count, "error") %> prohibited this flowitem from being saved:</h2>
+
+      <ul>
+      <% flowitem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :unititem_id %>
+    <%= form.text_field :unititem_id, id: :flowitem_unititem_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :flowitem_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :flowitem_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks, id: :flowitem_remarks %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

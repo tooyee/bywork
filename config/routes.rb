@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :flowworks
+  resources :flowdeals
+  resources :flowitems
+  resources :unitworks
+  resources :unitdeals
+  resources :unititems
+  resources :roleconfigs
+  resources :roles
   get 'admin' => 'admin#index'
 
   controller :sessions do
@@ -17,10 +25,7 @@ Rails.application.routes.draw do
   # get 'sessions/destroy'
 
   resources :users
-  resources :activeunits
-  resources :transactionunits
-  resources :businessunits
-  root 'businessunits#index', as: 'businessunits_index'
+  root 'unititems#index', as: 'unititems_index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

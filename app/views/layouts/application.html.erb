@@ -1,81 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MyWork</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<head>
+  <title>MyWork</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  </head>
+</head>
 
-  <body >
-    <header>
-      <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light bg-transparent">
-            <a class="navbar-brand" href="#"><strong>MyWork</strong>.net</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-            </button>
+<body >
+  <header>
+    <div class="container">
+      <nav class="navbar navbar-expand-md navbar-light bg-transparent">
+        <a class="navbar-brand" href="#"><strong>MyWork</strong>.net</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav mr-auto">
-         <li class="nav-item active">
-          <a class="nav-link" href="users">用户 <span class="sr-only">(current)</span></a>
-         </li>
-
-
-
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             组件
-           </a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item" href=<%= businessunits_path %>>商务</a>
-             <a class="dropdown-item" href=<%= transactionunits_path %>>交易</a>
-             <a class="dropdown-item" href=<%= activeunits_path %>>活动</a>
-           </div>
-         </li>
-
-
-
-        </ul>
-        <% if session[:user_id] %>
-        <ul>
-          <li><%= link_to '商务', businessunits_path   %></li>
-          <li><%= link_to '交易', transactionunits_path %></li>
-          <li><%= link_to '活动', activeunits_path %></li>
-          <li><%= link_to 'Users', users_path    %></li>
-        </ul>
-        <%= button_to 'Logout', logout_path, method: :delete   %>
-      <% end %>
-          <!-- <form class="form-inline my-2 my-lg-0">
-           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form> -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <% if session[:user_id] %>
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="users">User<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="roles">Role<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="roleconfigs">RoleConfig<span class="sr-only">(current)</span></a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Setup
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="users">User</a>
+                <a class="dropdown-item" href=<%= roles_path %>>Role</a>
+                <a class="dropdown-item" href=<%= roleconfigs_path %>>Config</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Unit
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="unititems">unit_item</a>
+                <a class="dropdown-item" href=<%= unitdeals_path %>>unit_deal</a>
+                <a class="dropdown-item" href=<%= unitworks_path %>>unit_work</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Flow
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="flowitems">flow_item</a>
+                <a class="dropdown-item" href=<%= flowdeals_path %>>flow_deal</a>
+                <a class="dropdown-item" href=<%= flowworks_path %>>flow_work</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="users">
+                <%= button_to 'Logout', logout_path, method: :delete   %>
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <% end %>
+          </ul>
         </div>
-        </nav>
-      </div>
-    </header>
-
-    <div class="container-fluid">
-     <%= yield %>
+      </nav>
     </div>
+  </header>
 
-    <div class="bottom container">
+  <div class="container-fluid">
+    <%= yield %>
+  </div>
 
-    </div>
+  <div class="bottom container">
 
-    <footer class="container">
-        <nav class="navbar navbar-expand-md navbar-light bg-transparent">
-          关于 | 故事 | 联系 | 文档  2018©mywork ICP备210037号
-        </nav>
+  </div>
 
+  <footer class="container">
+    <nav class="navbar navbar-expand-md navbar-light bg-transparent">
+      关于 | 故事 | 联系 | 文档  2018©mywork ICP备210037号
+    </nav>
 
-    </footer>
+  </footer>
 
   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

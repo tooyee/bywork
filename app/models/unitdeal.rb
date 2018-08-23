@@ -1,0 +1,2 @@
+class Unitdeal < ApplicationRecord
+end

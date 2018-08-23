@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Roleconfigs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Role</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roleconfigs.each do |roleconfig| %>
+      <tr>
+        <td><%= roleconfig.user.name %></td>
+        <td><%= roleconfig.role.name %></td>
+        <td><%= link_to 'Show', roleconfig %></td>
+        <td><%= link_to 'Edit', edit_roleconfig_path(roleconfig) %></td>
+        <td><%= link_to 'Destroy', roleconfig, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Roleconfig', new_roleconfig_path %>

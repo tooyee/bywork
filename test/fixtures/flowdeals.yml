@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flowitem: one
+  unitdeal: one
+  dealtype: 1
+  floworderid: 1
+  flowtype: 1
+
+two:
+  flowitem: two
+  unitdeal: two
+  dealtype: 1
+  floworderid: 1
+  flowtype: 1

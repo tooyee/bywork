@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flowworks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flowdeal</th>
+      <th>Unitwork</th>
+      <th>Accouttype</th>
+      <th>Floworderid</th>
+      <th>Flowtype</th>
+      <th>Vouchertemplatetype</th>
+      <th>Contenttype</th>
+      <th>Resourcestype</th>
+      <th>Subdealtype</th>
+      <th>Stockaccounttype</th>
+      <th>Copyresourcestype</th>
+      <th>Beforeunitwork</th>
+      <th>Afterunitwork</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flowworks.each do |flowwork| %>
+      <tr>
+        <td><%= flowwork.flowdeal.unitdeal.name %></td>
+        <td><%= flowwork.unitwork.name %></td>
+        <td><%= flowwork.accouttype %></td>
+        <td><%= flowwork.floworderid %></td>
+        <td><%= flowwork.flowtype %></td>
+        <td><%= flowwork.vouchertemplatetype %></td>
+        <td><%= flowwork.contenttype %></td>
+        <td><%= flowwork.resourcestype %></td>
+        <td><%= flowwork.subdealtype %></td>
+        <td><%= flowwork.stockaccounttype %></td>
+        <td><%= flowwork.copyresourcestype %></td>
+        <td><%= flowwork.beforeunitwork_id %></td>
+        <td><%= flowwork.afterunitwork_id %></td>
+        <td><%= link_to 'Show', flowwork %></td>
+        <td><%= link_to 'Edit', edit_flowwork_path(flowwork) %></td>
+        <td><%= link_to 'Destroy', flowwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flowwork', new_flowwork_path %>

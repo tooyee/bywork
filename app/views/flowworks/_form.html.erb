@@ -1,0 +1,82 @@
+<%= form_with(model: flowwork, local: true) do |form| %>
+  <% if flowwork.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flowwork.errors.count, "error") %> prohibited this flowwork from being saved:</h2>
+
+      <ul>
+      <% flowwork.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :flowdeal_id %>
+    <%= form.text_field :flowdeal_id, id: :flowwork_flowdeal_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unitwork_id %>
+    <%= form.text_field :unitwork_id, id: :flowwork_unitwork_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :accouttype %>
+    <%= form.number_field :accouttype, id: :flowwork_accouttype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floworderid %>
+    <%= form.number_field :floworderid, id: :flowwork_floworderid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flowtype %>
+    <%= form.number_field :flowtype, id: :flowwork_flowtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vouchertemplatetype %>
+    <%= form.number_field :vouchertemplatetype, id: :flowwork_vouchertemplatetype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contenttype %>
+    <%= form.number_field :contenttype, id: :flowwork_contenttype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :resourcestype %>
+    <%= form.number_field :resourcestype, id: :flowwork_resourcestype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subdealtype %>
+    <%= form.number_field :subdealtype, id: :flowwork_subdealtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stockaccounttype %>
+    <%= form.number_field :stockaccounttype, id: :flowwork_stockaccounttype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :copyresourcestype %>
+    <%= form.number_field :copyresourcestype, id: :flowwork_copyresourcestype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beforeunitwork_id %>
+    <%= form.number_field :beforeunitwork_id, id: :flowwork_beforeunitwork_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :afterunitwork_id %>
+    <%= form.number_field :afterunitwork_id, id: :flowwork_afterunitwork_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

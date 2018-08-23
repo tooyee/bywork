@@ -1,0 +1,2 @@
+class Unititem < ApplicationRecord
+end

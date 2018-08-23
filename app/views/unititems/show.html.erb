@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @unititem.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @unititem.name %>
+</p>
+
+<%= link_to 'Edit', edit_unititem_path(@unititem) %> |
+<%= link_to 'Back', unititems_path %>

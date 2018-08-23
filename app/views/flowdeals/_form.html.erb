@@ -1,0 +1,42 @@
+<%= form_with(model: flowdeal, local: true) do |form| %>
+  <% if flowdeal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flowdeal.errors.count, "error") %> prohibited this flowdeal from being saved:</h2>
+
+      <ul>
+      <% flowdeal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :flowitem_id %>
+    <%= form.text_field :flowitem_id, id: :flowdeal_flowitem_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unitdeal_id %>
+    <%= form.text_field :unitdeal_id, id: :flowdeal_unitdeal_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dealtype %>
+    <%= form.number_field :dealtype, id: :flowdeal_dealtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floworderid %>
+    <%= form.number_field :floworderid, id: :flowdeal_floworderid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flowtype %>
+    <%= form.number_field :flowtype, id: :flowdeal_flowtype %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+class Unitwork < ApplicationRecord
+end

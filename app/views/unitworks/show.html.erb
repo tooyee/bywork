@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @unitwork.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @unitwork.name %>
+</p>
+
+<%= link_to 'Edit', edit_unitwork_path(@unitwork) %> |
+<%= link_to 'Back', unitworks_path %>

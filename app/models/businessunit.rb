@@ -1,2 +1,0 @@
-class Businessunit < ApplicationRecord
-end

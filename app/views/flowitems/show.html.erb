@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Unititem:</strong>
+  <%= @flowitem.unititem %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @flowitem.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @flowitem.name %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @flowitem.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_flowitem_path(@flowitem) %> |
+<%= link_to 'Back', flowitems_path %>

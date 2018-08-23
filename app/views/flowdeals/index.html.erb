@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flowdeals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flowitem</th>
+      <th>Unitdeal</th>
+      <th>Dealtype</th>
+      <th>Floworderid</th>
+      <th>Flowtype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flowdeals.each do |flowdeal| %>
+      <tr>
+        <td><%= flowdeal.flowitem.unititem.name %></td>
+        <td><%= flowdeal.unitdeal.name %></td>
+        <td><%= flowdeal.dealtype %></td>
+        <td><%= flowdeal.floworderid %></td>
+        <td><%= flowdeal.flowtype %></td>
+        <td><%= link_to 'Show', flowdeal %></td>
+        <td><%= link_to 'Edit', edit_flowdeal_path(flowdeal) %></td>
+        <td><%= link_to 'Destroy', flowdeal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flowdeal', new_flowdeal_path %>
