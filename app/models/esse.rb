@@ -1,0 +1,2 @@
+class Esse < ApplicationRecord
+end

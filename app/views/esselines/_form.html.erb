@@ -1,0 +1,42 @@
+<%= form_with(model: esseline, local: true) do |form| %>
+  <% if esseline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(esseline.errors.count, "error") %> prohibited this esseline from being saved:</h2>
+
+      <ul>
+      <% esseline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :esse_id %>
+    <%= form.text_field :esse_id, id: :esseline_esse_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :esseline_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :esseline_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esselinetype %>
+    <%= form.number_field :esselinetype, id: :esseline_esselinetype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks, id: :esseline_remarks %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

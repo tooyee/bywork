@@ -63,6 +63,18 @@
                 <a class="dropdown-item" href=<%= flowworks_path %>>flow_work</a>
               </div>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Case
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="caseitems">case_item</a>
+                <a class="dropdown-item" href=<%= casedeals_path %>>case_deal</a>
+                <a class="dropdown-item" href=<%= caseflowworks_path %>>case_flowwork</a>
+                <a class="dropdown-item" href=<%= caseworks_path %>>case_work</a>
+                <a class="dropdown-item" href=<%= esses_path %>>esse</a>
+              </div>
+            </li>
             <li class="nav-item active">
               <a class="nav-link" href="users">
                 <%= button_to 'Logout', logout_path, method: :delete   %>
@@ -86,7 +98,7 @@
 
   <footer class="container">
     <nav class="navbar navbar-expand-md navbar-light bg-transparent">
-      关于 | 故事 | 联系 | 文档  2018©mywork ICP备210037号
+      2018©mywork ICP备210037号
     </nav>
 
   </footer>

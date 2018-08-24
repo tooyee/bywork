@@ -1,0 +1,32 @@
+<%= form_with(model: ess, local: true) do |form| %>
+  <% if ess.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ess.errors.count, "error") %> prohibited this ess from being saved:</h2>
+
+      <ul>
+      <% ess.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :ess_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :ess_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :essetype %>
+    <%= form.number_field :essetype, id: :ess_essetype %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

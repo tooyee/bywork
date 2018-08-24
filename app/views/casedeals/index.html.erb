@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Casedeals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Caseitem</th>
+      <th>Dealtype</th>
+      <th>Floworderid</th>
+      <th>Flowtype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @casedeals.each do |casedeal| %>
+      <tr>
+        <td><%= casedeal.name %></td>
+        <td><%= casedeal.caseitem.name %></td>
+        <td><%= casedeal.dealtype %></td>
+        <td><%= casedeal.floworderid %></td>
+        <td><%= casedeal.flowtype %></td>
+        <td><%= link_to 'Show', casedeal %></td>
+        <td><%= link_to 'Edit', edit_casedeal_path(casedeal) %></td>
+        <td><%= link_to 'Destroy', casedeal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Casedeal', new_casedeal_path %>

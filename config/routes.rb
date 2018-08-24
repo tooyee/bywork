@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :caseworklines
+  resources :caseworks
+  resources :caseflowworks
+  resources :esselines
+  resources :esses
+  resources :casedeals
+  resources :caseitems
   resources :flowworks
   resources :flowdeals
   resources :flowitems

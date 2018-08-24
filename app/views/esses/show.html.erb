@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @ess.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ess.name %>
+</p>
+
+<p>
+  <strong>Essetype:</strong>
+  <%= @ess.essetype %>
+</p>
+
+<%= link_to 'Edit', edit_ess_path(@ess) %> |
+<%= link_to 'Back', esses_path %>

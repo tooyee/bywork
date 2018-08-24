@@ -1,0 +1,87 @@
+<%= form_with(model: caseflowwork, local: true) do |form| %>
+  <% if caseflowwork.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(caseflowwork.errors.count, "error") %> prohibited this caseflowwork from being saved:</h2>
+
+      <ul>
+      <% caseflowwork.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :caseflowwork_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :caseflowwork_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :casedeal_id %>
+    <%= form.text_field :casedeal_id, id: :caseflowwork_casedeal_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :accouttype %>
+    <%= form.number_field :accouttype, id: :caseflowwork_accouttype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floworderid %>
+    <%= form.number_field :floworderid, id: :caseflowwork_floworderid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flowtype %>
+    <%= form.number_field :flowtype, id: :caseflowwork_flowtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vouchertemplatetype %>
+    <%= form.number_field :vouchertemplatetype, id: :caseflowwork_vouchertemplatetype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contenttype %>
+    <%= form.number_field :contenttype, id: :caseflowwork_contenttype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :resourcestype %>
+    <%= form.number_field :resourcestype, id: :caseflowwork_resourcestype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subdealtype %>
+    <%= form.number_field :subdealtype, id: :caseflowwork_subdealtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stockaccounttype %>
+    <%= form.number_field :stockaccounttype, id: :caseflowwork_stockaccounttype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :copyresourcestype %>
+    <%= form.number_field :copyresourcestype, id: :caseflowwork_copyresourcestype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beforeunitwork_id %>
+    <%= form.number_field :beforeunitwork_id, id: :caseflowwork_beforeunitwork_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :afterunitwork_id %>
+    <%= form.number_field :afterunitwork_id, id: :caseflowwork_afterunitwork_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

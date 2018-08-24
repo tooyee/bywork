@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @casedeal.name %>
+</p>
+
+<p>
+  <strong>Caseitem:</strong>
+  <%= @casedeal.caseitem %>
+</p>
+
+<p>
+  <strong>Dealtype:</strong>
+  <%= @casedeal.dealtype %>
+</p>
+
+<p>
+  <strong>Floworderid:</strong>
+  <%= @casedeal.floworderid %>
+</p>
+
+<p>
+  <strong>Flowtype:</strong>
+  <%= @casedeal.flowtype %>
+</p>
+
+<%= link_to 'Edit', edit_casedeal_path(@casedeal) %> |
+<%= link_to 'Back', casedeals_path %>

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  casedeal: one
+  accouttype: 1
+  floworderid: 1
+  flowtype: 1
+  vouchertemplatetype: 1
+  contenttype: 1
+  resourcestype: 1
+  subdealtype: 1
+  stockaccounttype: 1
+  copyresourcestype: 1
+  beforeunitwork_id: 1
+  afterunitwork_id: 1
+
+two:
+  code: MyString
+  name: MyString
+  casedeal: two
+  accouttype: 1
+  floworderid: 1
+  flowtype: 1
+  vouchertemplatetype: 1
+  contenttype: 1
+  resourcestype: 1
+  subdealtype: 1
+  stockaccounttype: 1
+  copyresourcestype: 1
+  beforeunitwork_id: 1
+  afterunitwork_id: 1

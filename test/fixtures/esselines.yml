@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  esse: one
+  code: MyString
+  name: MyString
+  esselinetype: 1
+  remarks: MyText
+
+two:
+  esse: two
+  code: MyString
+  name: MyString
+  esselinetype: 1
+  remarks: MyText

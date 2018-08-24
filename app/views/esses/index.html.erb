@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Esses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Essetype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @esses.each do |ess| %>
+      <tr>
+        <td><%= ess.code %></td>
+        <td><%= ess.name %></td>
+        <td><%= ess.essetype %></td>
+        <td><%= link_to 'Show', ess %></td>
+        <td><%= link_to 'Edit', edit_ess_path(ess) %></td>
+        <td><%= link_to 'Destroy', ess, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ess', new_ess_path %>

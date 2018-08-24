@@ -10,7 +10,107 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180823133729) do
+ActiveRecord::Schema.define(version: 20180824155513) do
+
+  create_table "casedeals", force: :cascade do |t|
+    t.string "name"
+    t.integer "caseitem_id"
+    t.integer "dealtype"
+    t.integer "floworderid"
+    t.integer "flowtype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caseitem_id"], name: "index_casedeals_on_caseitem_id"
+  end
+
+  create_table "caseflowworks", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "casedeal_id"
+    t.integer "accouttype"
+    t.integer "floworderid"
+    t.integer "flowtype"
+    t.integer "vouchertemplatetype"
+    t.integer "contenttype"
+    t.integer "resourcestype"
+    t.integer "subdealtype"
+    t.integer "stockaccounttype"
+    t.integer "copyresourcestype"
+    t.integer "beforeunitwork_id"
+    t.integer "afterunitwork_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casedeal_id"], name: "index_caseflowworks_on_casedeal_id"
+  end
+
+  create_table "caseitems", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "flowitem_id"
+    t.integer "status"
+    t.text "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flowitem_id"], name: "index_caseitems_on_flowitem_id"
+  end
+
+  create_table "caseworklines", force: :cascade do |t|
+    t.integer "casework_id"
+    t.integer "caseitem_id"
+    t.integer "esse_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.decimal "cost"
+    t.integer "vatgroup"
+    t.integer "whscode"
+    t.integer "status"
+    t.integer "openqty"
+    t.integer "baseid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caseitem_id"], name: "index_caseworklines_on_caseitem_id"
+    t.index ["casework_id"], name: "index_caseworklines_on_casework_id"
+    t.index ["esse_id"], name: "index_caseworklines_on_esse_id"
+  end
+
+  create_table "caseworks", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "caseflowwork_id"
+    t.integer "buyid"
+    t.string "buycode"
+    t.string "buyname"
+    t.integer "sellid"
+    t.string "sellcode"
+    t.string "sellname"
+    t.integer "salesid"
+    t.string "salescode"
+    t.string "salesname"
+    t.integer "status"
+    t.text "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caseflowwork_id"], name: "index_caseworks_on_caseflowwork_id"
+  end
+
+  create_table "esselines", force: :cascade do |t|
+    t.integer "esse_id"
+    t.string "code"
+    t.string "name"
+    t.integer "esselinetype"
+    t.text "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["esse_id"], name: "index_esselines_on_esse_id"
+  end
+
+  create_table "esses", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.integer "essetype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "flowdeals", force: :cascade do |t|
     t.integer "flowitem_id"

@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caseworks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Caseflowwork</th>
+      <th>Buyid</th>
+      <th>Buycode</th>
+      <th>Buyname</th>
+      <th>Sellid</th>
+      <th>Sellcode</th>
+      <th>Sellname</th>
+      <th>Salesid</th>
+      <th>Salescode</th>
+      <th>Salesname</th>
+      <th>Status</th>
+      <th>Remarks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caseworks.each do |casework| %>
+      <tr>
+        <td><%= casework.code %></td>
+        <td><%= casework.name %></td>
+        <td><%= casework.caseflowwork %></td>
+        <td><%= casework.buyid %></td>
+        <td><%= casework.buycode %></td>
+        <td><%= casework.buyname %></td>
+        <td><%= casework.sellid %></td>
+        <td><%= casework.sellcode %></td>
+        <td><%= casework.sellname %></td>
+        <td><%= casework.salesid %></td>
+        <td><%= casework.salescode %></td>
+        <td><%= casework.salesname %></td>
+        <td><%= casework.status %></td>
+        <td><%= casework.remarks %></td>
+        <td><%= link_to 'Show', casework %></td>
+        <td><%= link_to 'Edit', edit_casework_path(casework) %></td>
+        <td><%= link_to 'Destroy', casework, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Casework', new_casework_path %>

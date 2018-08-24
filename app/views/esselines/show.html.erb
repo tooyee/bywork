@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Esse:</strong>
+  <%= @esseline.esse %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @esseline.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @esseline.name %>
+</p>
+
+<p>
+  <strong>Esselinetype:</strong>
+  <%= @esseline.esselinetype %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @esseline.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_esseline_path(@esseline) %> |
+<%= link_to 'Back', esselines_path %>

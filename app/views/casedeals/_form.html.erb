@@ -1,0 +1,42 @@
+<%= form_with(model: casedeal, local: true) do |form| %>
+  <% if casedeal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(casedeal.errors.count, "error") %> prohibited this casedeal from being saved:</h2>
+
+      <ul>
+      <% casedeal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :casedeal_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caseitem_id %>
+    <%= form.text_field :caseitem_id, id: :casedeal_caseitem_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dealtype %>
+    <%= form.number_field :dealtype, id: :casedeal_dealtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floworderid %>
+    <%= form.number_field :floworderid, id: :casedeal_floworderid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flowtype %>
+    <%= form.number_field :flowtype, id: :casedeal_flowtype %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

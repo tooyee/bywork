@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @caseitem.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @caseitem.name %>
+</p>
+
+<p>
+  <strong>Flowitem:</strong>
+  <%= @caseitem.flowitem %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @caseitem.status %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @caseitem.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_caseitem_path(@caseitem) %> |
+<%= link_to 'Back', caseitems_path %>

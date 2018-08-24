@@ -1,0 +1,87 @@
+<%= form_with(model: casework, local: true) do |form| %>
+  <% if casework.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(casework.errors.count, "error") %> prohibited this casework from being saved:</h2>
+
+      <ul>
+      <% casework.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :casework_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :casework_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caseflowwork_id %>
+    <%= form.text_field :caseflowwork_id, id: :casework_caseflowwork_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :buyid %>
+    <%= form.number_field :buyid, id: :casework_buyid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :buycode %>
+    <%= form.text_field :buycode, id: :casework_buycode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :buyname %>
+    <%= form.text_field :buyname, id: :casework_buyname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sellid %>
+    <%= form.number_field :sellid, id: :casework_sellid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sellcode %>
+    <%= form.text_field :sellcode, id: :casework_sellcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sellname %>
+    <%= form.text_field :sellname, id: :casework_sellname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salesid %>
+    <%= form.number_field :salesid, id: :casework_salesid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salescode %>
+    <%= form.text_field :salescode, id: :casework_salescode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salesname %>
+    <%= form.text_field :salesname, id: :casework_salesname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :casework_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks, id: :casework_remarks %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

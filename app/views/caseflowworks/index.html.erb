@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caseflowworks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Casedeal</th>
+      <th>Accouttype</th>
+      <th>Floworderid</th>
+      <th>Flowtype</th>
+      <th>Vouchertemplatetype</th>
+      <th>Contenttype</th>
+      <th>Resourcestype</th>
+      <th>Subdealtype</th>
+      <th>Stockaccounttype</th>
+      <th>Copyresourcestype</th>
+      <th>Beforeunitwork</th>
+      <th>Afterunitwork</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caseflowworks.each do |caseflowwork| %>
+      <tr>
+        <td><%= caseflowwork.code %></td>
+        <td><%= caseflowwork.name %></td>
+        <td><%= caseflowwork.casedeal.name %></td>
+        <td><%= caseflowwork.accouttype %></td>
+        <td><%= caseflowwork.floworderid %></td>
+        <td><%= caseflowwork.flowtype %></td>
+        <td><%= caseflowwork.vouchertemplatetype %></td>
+        <td><%= caseflowwork.contenttype %></td>
+        <td><%= caseflowwork.resourcestype %></td>
+        <td><%= caseflowwork.subdealtype %></td>
+        <td><%= caseflowwork.stockaccounttype %></td>
+        <td><%= caseflowwork.copyresourcestype %></td>
+        <td><%= caseflowwork.beforeunitwork_id %></td>
+        <td><%= caseflowwork.afterunitwork_id %></td>
+        <td><%= link_to 'Show', caseflowwork %></td>
+        <td><%= link_to 'Edit', edit_caseflowwork_path(caseflowwork) %></td>
+        <td><%= link_to 'Destroy', caseflowwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caseflowwork', new_caseflowwork_path %>

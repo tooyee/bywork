@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  caseflowwork: one
+  buyid: 1
+  buycode: MyString
+  buyname: MyString
+  sellid: 1
+  sellcode: MyString
+  sellname: MyString
+  salesid: 1
+  salescode: MyString
+  salesname: MyString
+  status: 1
+  remarks: MyText
+
+two:
+  code: MyString
+  name: MyString
+  caseflowwork: two
+  buyid: 1
+  buycode: MyString
+  buyname: MyString
+  sellid: 1
+  sellcode: MyString
+  sellname: MyString
+  salesid: 1
+  salescode: MyString
+  salesname: MyString
+  status: 1
+  remarks: MyText
