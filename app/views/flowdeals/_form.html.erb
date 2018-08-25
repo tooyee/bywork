@@ -12,18 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :flowitem_id %>
-    <%= form.text_field :flowitem_id, id: :flowdeal_flowitem_id %>
+    <%= form.label :flowitem_id,"Flowitem" %>
+    <%= form.select :flowitem_id,
+    Flowitem.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
+
   <div class="field">
-    <%= form.label :unitdeal_id %>
-    <%= form.text_field :unitdeal_id, id: :flowdeal_unitdeal_id %>
+    <%= form.label :unitdeal_id,"Unitdeal" %>
+    <%= form.select :unitdeal_id,
+    Unitdeal.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
   <div class="field">
     <%= form.label :dealtype %>
-    <%= form.number_field :dealtype, id: :flowdeal_dealtype %>
+    <%= form.select :dealtype, Flowdeal.dealtypes.keys,
+              prompt: "select a dealtype" %>
   </div>
 
   <div class="field">
@@ -32,8 +36,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :flowtype %>
-    <%= form.number_field :flowtype, id: :flowdeal_flowtype %>
+  <%= form.label :flowtype %>
+  <%= form.select :flowtype, Flowdeal.flowtypes.keys,
+                prompt: "select a type" %>
   </div>
 
   <div class="actions">

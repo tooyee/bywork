@@ -11,20 +11,24 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= form.label :flowdeal_id %>
-    <%= form.text_field :flowdeal_id, id: :flowwork_flowdeal_id %>
+    <%= form.label :flowdeal_id,"Flowdeal" %>
+    <%= form.select :flowdeal_id,
+    Flowdeal.all.collect {|p| [ p.unitdeal.name, p.id ] } %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :unitwork_id,"Flowdeal" %>
+    <%= form.select :unitwork_id,
+    Unitwork.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
   <div class="field">
-    <%= form.label :unitwork_id %>
-    <%= form.text_field :unitwork_id, id: :flowwork_unitwork_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :accouttype %>
-    <%= form.number_field :accouttype, id: :flowwork_accouttype %>
-  </div>
+  <%= form.label :accouttype %>
+  <%= form.select :accouttype, Flowwork.accouttypes.keys %>
+</div>
 
   <div class="field">
     <%= form.label :floworderid %>
@@ -32,49 +36,54 @@
   </div>
 
   <div class="field">
-    <%= form.label :flowtype %>
-    <%= form.number_field :flowtype, id: :flowwork_flowtype %>
-  </div>
+  <%= form.label :flowtype %>
+  <%= form.select :flowtype, Flowwork.flowtypes.keys %>
+</div>
+
+
 
   <div class="field">
-    <%= form.label :vouchertemplatetype %>
-    <%= form.number_field :vouchertemplatetype, id: :flowwork_vouchertemplatetype %>
-  </div>
+  <%= form.label :vouchertemplatetype %>
+  <%= form.select :vouchertemplatetype, Flowwork.vouchertemplatetypes.keys %>
+</div>
 
   <div class="field">
-    <%= form.label :contenttype %>
-    <%= form.number_field :contenttype, id: :flowwork_contenttype %>
-  </div>
+  <%= form.label :contenttype %>
+  <%= form.select :contenttype, Flowwork.contenttypes.keys %>
+</div>
 
-  <div class="field">
-    <%= form.label :resourcestype %>
-    <%= form.number_field :resourcestype, id: :flowwork_resourcestype %>
-  </div>
+<div class="field">
+  <%= form.label :resourcestype %>
+  <%= form.select :resourcestype, Flowwork.resourcestypes.keys %>
+</div>
 
-  <div class="field">
-    <%= form.label :subdealtype %>
-    <%= form.number_field :subdealtype, id: :flowwork_subdealtype %>
-  </div>
+<div class="field">
+  <%= form.label :subdealtype %>
+  <%= form.select :subdealtype, Flowwork.subdealtypes.keys %>
+</div>
 
-  <div class="field">
-    <%= form.label :stockaccounttype %>
-    <%= form.number_field :stockaccounttype, id: :flowwork_stockaccounttype %>
-  </div>
+<div class="field">
+  <%= form.label :stockaccounttype %>
+  <%= form.select :stockaccounttype, Flowwork.stockaccounttypes.keys %>
+</div>
 
-  <div class="field">
-    <%= form.label :copyresourcestype %>
-    <%= form.number_field :copyresourcestype, id: :flowwork_copyresourcestype %>
-  </div>
+<div class="field">
+  <%= form.label :copyresourcestype %>
+  <%= form.select :copyresourcestype, Flowwork.copyresourcestypes.keys %>
+</div>
 
-  <div class="field">
-    <%= form.label :beforeunitwork_id %>
-    <%= form.number_field :beforeunitwork_id, id: :flowwork_beforeunitwork_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :afterunitwork_id %>
-    <%= form.number_field :afterunitwork_id, id: :flowwork_afterunitwork_id %>
-  </div>
+
+<div class="field">
+  <%= form.label :beforeunitwork_id,"before unitwork name" %>
+  <%= form.select :beforeunitwork_id,
+  Flowwork.where(flowdeal_id: flowwork.flowdeal_id).all.collect {|p| [ p.unitwork.name, p.id ] } %>
+</div>
+<div class="field">
+  <%= form.label :afterunitwork_id,"after unitwork name" %>
+  <%= form.select :afterunitwork_id,
+  Flowwork.where(flowdeal_id: flowwork.flowdeal_id).all.collect {|p| [ p.unitwork.name, p.id ] } %>
+</div>
 
   <div class="actions">
     <%= form.submit %>

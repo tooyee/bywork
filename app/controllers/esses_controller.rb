@@ -28,7 +28,7 @@ class EssesController < ApplicationController
 
     respond_to do |format|
       if @ess.save
-        format.html { redirect_to @ess, notice: 'Esse was successfully created.' }
+        format.html { redirect_to esses_url, notice: 'Esse was successfully created.' }
         format.json { render :show, status: :created, location: @ess }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EssesController < ApplicationController
   def update
     respond_to do |format|
       if @ess.update(ess_params)
-        format.html { redirect_to @ess, notice: 'Esse was successfully updated.' }
+        format.html { redirect_to esses_url, notice: 'Esse was successfully updated.' }
         format.json { render :show, status: :ok, location: @ess }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class EssesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ess_params
-      params.require(:ess).permit(:code, :name, :essetype)
+      params.require(:esse).permit(:code, :name, :essetype)
     end
 end

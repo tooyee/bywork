@@ -21,10 +21,16 @@
     <%= form.text_field :name, id: :ess_name %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :essetype %>
     <%= form.number_field :essetype, id: :ess_essetype %>
-  </div>
+  </div> -->
+
+  <div class="field">
+  <%= form.label :essetype %>
+  <%= form.select :essetype, Esse.essetypes.keys,
+                prompt: "select a type" %>
+</div>
 
   <div class="actions">
     <%= form.submit %>

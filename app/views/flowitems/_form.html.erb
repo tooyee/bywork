@@ -11,10 +11,14 @@
     </div>
   <% end %>
 
+
+
   <div class="field">
-    <%= form.label :unititem_id %>
-    <%= form.text_field :unititem_id, id: :flowitem_unititem_id %>
+    <%= form.label :unititem_id,"Unititem" %>
+    <%= form.select :unititem_id,
+  Unititem.all.collect {|p| [ p.name, p.id ] } %>
   </div>
+
 
   <div class="field">
     <%= form.label :code %>

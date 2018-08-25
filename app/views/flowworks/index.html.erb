@@ -5,19 +5,19 @@
 <table>
   <thead>
     <tr>
-      <th>Flowdeal</th>
-      <th>Unitwork</th>
-      <th>Accouttype</th>
-      <th>Floworderid</th>
-      <th>Flowtype</th>
-      <th>Vouchertemplatetype</th>
-      <th>Contenttype</th>
-      <th>Resourcestype</th>
-      <th>Subdealtype</th>
-      <th>Stockaccounttype</th>
-      <th>Copyresourcestype</th>
-      <th>Beforeunitwork</th>
-      <th>Afterunitwork</th>
+      <th>Flow deal</th>
+      <th>Unit work</th>
+      <th>Accout type</th>
+      <th>Flow orderid</th>
+      <th>Flow type</th>
+      <th>Voucher template type</th>
+      <th>Content type</th>
+      <th>Esse type</th>
+      <th>Subdeal type</th>
+      <th>Stock account type</th>
+      <th>Copy resources type</th>
+      <th>Before unit work</th>
+      <th>After unit work</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -36,8 +36,8 @@
         <td><%= flowwork.subdealtype %></td>
         <td><%= flowwork.stockaccounttype %></td>
         <td><%= flowwork.copyresourcestype %></td>
-        <td><%= flowwork.beforeunitwork_id %></td>
-        <td><%= flowwork.afterunitwork_id %></td>
+        <td><%= flowwork.beforeflowwork.unitwork.name %></td>
+        <td><%= flowwork.afterflowwork.unitwork.name %></td>
         <td><%= link_to 'Show', flowwork %></td>
         <td><%= link_to 'Edit', edit_flowwork_path(flowwork) %></td>
         <td><%= link_to 'Destroy', flowwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
