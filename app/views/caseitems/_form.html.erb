@@ -21,9 +21,11 @@
     <%= form.text_field :name, id: :caseitem_name %>
   </div>
 
+
   <div class="field">
-    <%= form.label :flowitem_id %>
-    <%= form.text_field :flowitem_id, id: :caseitem_flowitem_id %>
+    <%= form.label :flowitem_id,"Flowitem" %>
+    <%= form.select :flowitem_id,
+    Flowitem.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
   <div class="field">

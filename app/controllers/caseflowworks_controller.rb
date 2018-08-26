@@ -28,7 +28,7 @@ class CaseflowworksController < ApplicationController
 
     respond_to do |format|
       if @caseflowwork.save
-        format.html { redirect_to @caseflowwork, notice: 'Caseflowwork was successfully created.' }
+        format.html { redirect_to caseflowworks_url, notice: 'Caseflowwork was successfully created.' }
         format.json { render :show, status: :created, location: @caseflowwork }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CaseflowworksController < ApplicationController
   def update
     respond_to do |format|
       if @caseflowwork.update(caseflowwork_params)
-        format.html { redirect_to @caseflowwork, notice: 'Caseflowwork was successfully updated.' }
+        format.html { redirect_to caseflowworks_url, notice: 'Caseflowwork was successfully updated.' }
         format.json { render :show, status: :ok, location: @caseflowwork }
       else
         format.html { render :edit }

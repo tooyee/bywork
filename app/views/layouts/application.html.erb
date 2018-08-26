@@ -1,110 +1,94 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MyWork</title>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <head>
+    <title>MyWork</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-</head>
+  </head>
 
-<body >
-  <header>
-    <div class="container">
-      <nav class="navbar navbar-expand-md navbar-light bg-transparent">
-        <a class="navbar-brand" href="#"><strong>MyWork</strong>.net</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <body >
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-transparent">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <% if session[:user_id] %>
-            <!-- <li class="nav-item active">
-              <a class="nav-link" href="users">User<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="roles">Role<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="roleconfigs">RoleConfig<span class="sr-only">(current)</span></a>
-            </li> -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Setup
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="users">User</a>
-                <a class="dropdown-item" href=<%= roles_path %>>Role</a>
-                <a class="dropdown-item" href=<%= roleconfigs_path %>>Config</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Unit
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="unititems">unit_item</a>
-                <a class="dropdown-item" href=<%= unitdeals_path %>>unit_deal</a>
-                <a class="dropdown-item" href=<%= unitworks_path %>>unit_work</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Flow
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="flowitems">flow_item</a>
-                <a class="dropdown-item" href=<%= flowdeals_path %>>flow_deal</a>
-                <a class="dropdown-item" href=<%= flowworks_path %>>flow_work</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Case
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="caseitems">case_item</a>
-                <a class="dropdown-item" href=<%= casedeals_path %>>case_deal</a>
-                <a class="dropdown-item" href=<%= caseflowworks_path %>>case_flowwork</a>
-                <a class="dropdown-item" href=<%= caseworks_path %>>case_work</a>
-                <a class="dropdown-item" href=<%= esses_path %>>esse</a>
-              </div>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="users">
-                <%= button_to 'Logout', logout_path, method: :delete   %>
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
+          <a class="navbar-brand" href="#"><strong>MyWork</strong>.net</a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <% if session[:user_id] %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Setup
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="users">User</a>
+                    <a class="dropdown-item" href=<%= roles_path %>>Role</a>
+                    <a class="dropdown-item" href=<%= roleconfigs_path %>>Config</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Flow
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="unititems">unit_item</a>
+                    <a class="dropdown-item" href=<%= unitdeals_path %>>unit_deal</a>
+                    <a class="dropdown-item" href=<%= unitworks_path %>>unit_work</a>
+                    <a class="dropdown-item" href="flowitems">flow_item</a>
+                    <a class="dropdown-item" href=<%= flowdeals_path %>>flow_deal</a>
+                    <a class="dropdown-item" href=<%= flowworks_path %>>flow_work</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Work
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="caseitems">case_item</a>
+                    <a class="dropdown-item" href=<%= casedeals_path %>>case_deal</a>
+                    <a class="dropdown-item" href=<%= caseflowworks_path %>>case_flowwork</a>
+                    <a class="dropdown-item" href=<%= caseworks_path %>>case_work</a>
+                    <a class="dropdown-item" href=<%= esses_path %>>esse</a>
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="users">
+                    <%= button_to 'Logout', logout_path, method: :delete   %>
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <h4><%= session[:user_name] %></h4>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+     <%= yield %>
     </div>
-  </header>
 
-  <div class="container-fluid">
-    <%= yield %>
-  </div>
+    <footer class="container">
+      <nav class="navbar navbar-expand-md navbar-light bg-transparent">
+        2018©mywork ICP备210037号
+      </nav>
+    </footer>
 
-  <div class="bottom container">
-
-  </div>
-
-  <footer class="container">
-    <nav class="navbar navbar-expand-md navbar-light bg-transparent">
-      2018©mywork ICP备210037号
-    </nav>
-
-  </footer>
-
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

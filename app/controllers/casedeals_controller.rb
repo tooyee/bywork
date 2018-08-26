@@ -28,7 +28,7 @@ class CasedealsController < ApplicationController
 
     respond_to do |format|
       if @casedeal.save
-        format.html { redirect_to @casedeal, notice: 'Casedeal was successfully created.' }
+        format.html { redirect_to casedeals_url, notice: 'Casedeal was successfully created.' }
         format.json { render :show, status: :created, location: @casedeal }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CasedealsController < ApplicationController
   def update
     respond_to do |format|
       if @casedeal.update(casedeal_params)
-        format.html { redirect_to @casedeal, notice: 'Casedeal was successfully updated.' }
+        format.html { redirect_to casedeals_url, notice: 'Casedeal was successfully updated.' }
         format.json { render :show, status: :ok, location: @casedeal }
       else
         format.html { render :edit }

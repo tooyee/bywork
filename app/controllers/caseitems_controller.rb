@@ -28,7 +28,7 @@ class CaseitemsController < ApplicationController
 
     respond_to do |format|
       if @caseitem.save
-        format.html { redirect_to @caseitem, notice: 'Caseitem was successfully created.' }
+        format.html { redirect_to caseitems_url, notice: 'Caseitem was successfully created.' }
         format.json { render :show, status: :created, location: @caseitem }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CaseitemsController < ApplicationController
   def update
     respond_to do |format|
       if @caseitem.update(caseitem_params)
-        format.html { redirect_to @caseitem, notice: 'Caseitem was successfully updated.' }
+        format.html { redirect_to caseitems_url, notice: 'Caseitem was successfully updated.' }
         format.json { render :show, status: :ok, location: @caseitem }
       else
         format.html { render :edit }

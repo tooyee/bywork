@@ -1,29 +1,63 @@
 <p id="notice"><%= notice %></p>
+<div class="card-header  border-first">
+    <div class="card-block">
+      <h5 class="card-title"><%= @caseitem.flowitem.name %>: <%= @caseitem.id %></h5>
+      <div class="p-1 form-group row">
+        <div class="col-sm-4">代码：<%= @caseitem.code %></div>
+        <div class="col-sm-4">名称：<%= @caseitem.name %></div>
+        <div class="col-sm-4">状态：<%= @caseitem.status %></div>
+        <div class="col-sm-4">日期：<%= @caseitem.created_at.to_s(:mdy) %></div>
+        <div class="col-sm-4">备注：<%= @caseitem.remarks %></div>
+        <div class="col-sm-4 d-none d-sm-block">桌面显示</div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Code:</strong>
-  <%= @caseitem.code %>
-</p>
+<div class="card-body text-first border-first">
+  <!-- casedeal -->
+  <ul id="mytab" class="nav nav-pills flex-sm-row">
+    <% @caseitem.casedeals.each do |casedeal| %>
+      <li  class="nav-item">
+        <a class="nav-link" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
+      </li>
+    <% end %>
+  </ul>
+  <p></p>
+  <!-- casedeal pane -->
+  <div class="tab-content">
+    <% @caseitem.casedeals.each do |casedeal| %>
+      <% if casedeal.floworderid == 1 %>
+        <div class="tab-pane active" id="<%= casedeal.name %>"><!--2 每个交易下的活动集 -->   <!--3 每个活动标题下的实例活动 -->
+       <% else %>
+        <div class="tab-pane" id="<%= casedeal.name %>">
+      <% end %><hr>
+      <table>
+        <tbody>
+          <!-- caseflowwork -->
+          <tr>
+            <% casedeal.caseflowworks.each do |caseflowwork| %>
+              <td  class="text-info align-self-start">
+                <h6><%= caseflowwork.name %></h6>
+              </td>
+            <% end %>
+          </tr>
+          <!-- casework -->
+          <td>
+            <button type="button" class="btn btn-danger btn-sm">
+              <%= casedeal.name %>
+              <span class="badge badge-light"><%= casedeal.id %></span>
+            </button><%= "->" %><p></p>
+          </td>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @caseitem.name %>
-</p>
-
-<p>
-  <strong>Flowitem:</strong>
-  <%= @caseitem.flowitem %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @caseitem.status %>
-</p>
-
-<p>
-  <strong>Remarks:</strong>
-  <%= @caseitem.remarks %>
-</p>
-
-<%= link_to 'Edit', edit_caseitem_path(@caseitem) %> |
-<%= link_to 'Back', caseitems_path %>
+<div class="card-footer bg-transparent border-first">
+  <%= link_to 'Edit', edit_caseitem_path(@caseitem) %> |
+  <%= link_to 'Back', caseitems_path %>
+</div>

@@ -28,7 +28,7 @@ class CaseworksController < ApplicationController
 
     respond_to do |format|
       if @casework.save
-        format.html { redirect_to @casework, notice: 'Casework was successfully created.' }
+        format.html { redirect_to caseworks_url, notice: 'Casework was successfully created.' }
         format.json { render :show, status: :created, location: @casework }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CaseworksController < ApplicationController
   def update
     respond_to do |format|
       if @casework.update(casework_params)
-        format.html { redirect_to @casework, notice: 'Casework was successfully updated.' }
+        format.html { redirect_to caseworks_url, notice: 'Casework was successfully updated.' }
         format.json { render :show, status: :ok, location: @casework }
       else
         format.html { render :edit }
