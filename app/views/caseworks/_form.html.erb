@@ -21,14 +21,17 @@
     <%= form.text_field :name, id: :casework_name %>
   </div>
 
+
   <div class="field">
     <%= form.label :caseflowwork_id %>
-    <%= form.text_field :caseflowwork_id, id: :casework_caseflowwork_id %>
+    <%= form.select :caseflowwork_id,
+    Caseflowwork.all.collect {|p| [ p.name, p.id ] } %>
   </div>
+
 
   <div class="field">
     <%= form.label :buyid %>
-    <%= form.number_field :buyid, id: :casework_buyid %>
+    <%= form.select :buyid, Esse.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
   <div class="field">
@@ -41,9 +44,13 @@
     <%= form.text_field :buyname, id: :casework_buyname %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :sellid %>
     <%= form.number_field :sellid, id: :casework_sellid %>
+  </div> -->
+  <div class="field">
+    <%= form.label :sellid %>
+    <%= form.select :sellid, Esse.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
   <div class="field">
@@ -56,9 +63,13 @@
     <%= form.text_field :sellname, id: :casework_sellname %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :salesid %>
     <%= form.number_field :salesid, id: :casework_salesid %>
+  </div> -->
+  <div class="field">
+    <%= form.label :salesid %>
+    <%= form.select :salesid, Esse.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
   <div class="field">

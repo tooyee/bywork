@@ -28,6 +28,9 @@ class CaseitemsController < ApplicationController
 
     respond_to do |format|
       if @caseitem.save
+        # copy flowdeals to casedeals
+        @caseitem.copy_flowdeals_to_casedeals(@caseitem)
+
         format.html { redirect_to caseitems_url, notice: 'Caseitem was successfully created.' }
         format.json { render :show, status: :created, location: @caseitem }
       else

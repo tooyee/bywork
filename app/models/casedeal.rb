@@ -1,6 +1,8 @@
 class Casedeal < ApplicationRecord
+
   belongs_to :caseitem
   has_many :caseflowworks
+  
   enum dealtype: {
       "Sale"        => 1,
       "Purchase"    => 2

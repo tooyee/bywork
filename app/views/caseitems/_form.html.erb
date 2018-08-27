@@ -24,8 +24,7 @@
 
   <div class="field">
     <%= form.label :flowitem_id,"Flowitem" %>
-    <%= form.select :flowitem_id,
-    Flowitem.all.collect {|p| [ p.name, p.id ] } %>
+    <%= form.select :flowitem_id, Flowitem.all.collect {|p| [ p.name, p.id ] } %>
   </div>
 
   <div class="field">

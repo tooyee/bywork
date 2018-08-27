@@ -1,4 +1,10 @@
 class Esse < ApplicationRecord
+
+  has_many :esselines
+  # has_many :buys
+  # has_many :sells
+  # has_many :sales
+
   # 资源类型 activeunitflow resourcestype integer
   # 人力, 物料, 产品, 文档, 服务, 管理
 enum essetype: {

@@ -65,10 +65,10 @@ class Flowwork < ApplicationRecord
     enum stockaccounttype: {
     "same arrival"           => 1,
     "different arrival"      => 2,
-    "same deliver"            => 3,
-    "different deliver"       => 4,
-    "Return same deliver"             => 5,
-    "Return same arrival"          => 6,
+    "same deliver"           => 3,
+    "different deliver"      => 4,
+    "Return same deliver"    => 5,
+    "Return same arrival"    => 6,
     }
     validates :stockaccounttype, inclusion: stockaccounttypes.keys
 
