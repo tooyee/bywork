@@ -23,9 +23,9 @@
   <tbody>
     <% @caseworklines.each do |caseworkline| %>
       <tr>
-        <td><%= caseworkline.casework %></td>
-        <td><%= caseworkline.caseitem %></td>
-        <td><%= caseworkline.esse %></td>
+        <td><%= caseworkline.casework.id %></td>
+        <td><%= caseworkline.caseitem.name %></td>
+        <td><%= caseworkline.esse.name %></td>
         <td><%= caseworkline.quantity %></td>
         <td><%= caseworkline.price %></td>
         <td><%= caseworkline.cost %></td>

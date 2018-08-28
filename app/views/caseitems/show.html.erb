@@ -17,9 +17,15 @@
   <!-- casedeal -->
   <ul id="mytab" class="nav nav-pills flex-sm-row">
     <% @caseitem.casedeals.each do |casedeal| %>
-      <li  class="nav-item">
-        <a class="nav-link" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
-      </li>
+      <% if casedeal.floworderid == 1 %>
+          <li  class="nav-item">
+            <a class="nav-link active show" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
+          </li>
+       <% else %>
+         <li  class="nav-item">
+           <a class="nav-link" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
+         </li>
+      <% end %>
     <% end %>
   </ul>
   <p></p>
@@ -30,26 +36,34 @@
         <div class="tab-pane active" id="<%= casedeal.name %>"><!--2 每个交易下的活动集 -->   <!--3 每个活动标题下的实例活动 -->
        <% else %>
         <div class="tab-pane" id="<%= casedeal.name %>">
-      <% end %><hr>
+      <% end %>
       <table>
         <tbody>
           <!-- caseflowwork -->
           <tr>
             <% casedeal.caseflowworks.each do |caseflowwork| %>
-              <td  class="text-info align-self-start">
-                <h6><%= caseflowwork.name %></h6>
+              <td>
+                <div class="d-flex align-items-start flex-column" style="height: 200px;">
+                    <div class="btn-info btn-sm" >
+                      <h7>
+                        <%= caseflowwork.name %>
+                      </h7>
+                    </div>
+                    <p></p>
+                    <div >
+                      <!-- casework -->
+                      <% caseflowwork.caseworks.each do |casework| %>
+                        <div class="btn btn-danger btn-sm">
+                          <% casework.name %>
+                          <span class="badge badge-light"><%= casework.id %></span>
+                        </div><p></p>
+                      <% end %>
+                    </div>
+                </div>
               </td>
             <% end %>
           </tr>
-          <!-- casework -->
-          <td>
-            <button type="button" class="btn btn-danger btn-sm">
-              <%= casedeal.name %>
-              <span class="badge badge-light"><%= casedeal.id %></span>
-            </button><%= "->" %><p></p>
-          </td>
-          <tr>
-          </tr>
+
         </tbody>
       </table>
         </div>

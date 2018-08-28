@@ -1,74 +1,81 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Code:</strong>
-  <%= @casework.code %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @casework.name %>
-</p>
-
-<p>
-  <strong>Caseflowwork:</strong>
-  <%= @casework.caseflowwork.name %>
-</p>
-
-<p>
-  <strong>Buyid:</strong>
-  <%= @casework.buyid.id %>
-</p>
-
-<p>
-  <strong>Buycode:</strong>
-  <%= @casework.buyid.code %>
-</p>
-
-<p>
-  <strong>Buyname:</strong>
-  <%= @casework.buyid.name %>
-</p>
-
-<p>
-  <strong>Sellid:</strong>
-  <%= @casework.sellid.id %>
-</p>
-
-<p>
-  <strong>Sellcode:</strong>
-  <%= @casework.sellid.code %>
-</p>
-
-<p>
-  <strong>Sellname:</strong>
-  <%= @casework.sellid.name %>
-</p>
-
-<p>
-  <strong>Salesid:</strong>
-  <%= @casework.salesid.id %>
-</p>
-
-<p>
-  <strong>Salescode:</strong>
-  <%= @casework.salesid.code %>
-</p>
-
-<p>
-  <strong>Salesname:</strong>
-  <%= @casework.salesid.name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @casework.status %>
-</p>
-
-<p>
-  <strong>Remarks:</strong>
-  <%= @casework.remarks %>
-</p>
-
 <%= link_to 'Edit', edit_casework_path(@casework) %> |
 <%= link_to 'Back', caseworks_path %>
+
+<div  class="card bg-light mb-3">
+  <p id="notice"><%= notice %></p>
+  <div class="card-header bg-transparent border-first">
+    <div class="card-block">
+      <h6 class="card-title"><%= @casework.name %>: <%= @casework.id %></h6>
+      <div class="p-1 form-group row">
+        <div class="col-sm-4"><p><%= @casework.buy.code %>：<%= @casework.buy.name %></p></div>
+        <div class="col-sm-4"><p><%= @casework.sell.code %>：<%= @casework.sell.name %></p></div>
+        <div class="col-sm-4"><p><%= @casework.sales.code %>：<%= @casework.sales.name %></p></div>
+        <div class="col-sm-4"><p>状态：<%= @casework.status %></p></div>
+        <div class="col-sm-4"><p>日期：<%= @casework.created_at.to_s(:mdy) %></p></div>
+        <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body text-first border-first">
+    <table class="table table-sm table-striped">
+     <thead class="thead-dark">
+      <tr>
+        <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+        <th><p class="d-inline ">代码</p></th>
+        <th><p class="d-inline ">资源</p></th>
+        <th><p class="d-inline ">数量</p></th>
+        <th><p class="d-inline">价格</p></th>
+        <th><p class="d-inline ">合计</p></th>
+        <th><p class="p-0 d-none d-sm-inline ">成本价</p></th>
+        <th><p class="p-0 d-none d-sm-inline ">成本合计</p></th>
+        <th><p class="d-none d-sm-inline ">税率</p></th>
+        <th><p class="d-none d-sm-inline ">仓库</p></th>
+        <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+      </tr>
+     </thead>
+
+     <tbody>
+      <% @casework.caseworklines.each do |caseworkline| %>
+       <tr>
+         <td>
+           <div class="d-inline">
+             <%= link_to caseworkline.esse.code, edit_casework_caseworkline_path(caseworkline.casework, caseworkline)  %>
+           </div>
+         </td>
+         <td><div class="d-inline"><%= caseworkline.esse.name %></div></td>
+         <td><div class="d-inline"><p class="text-right"><%= caseworkline.quantity %></p></div></td>
+         <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price) %></p></div></td>
+         <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price_total) %></p></div></td>
+
+         <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost) %></p></div></td>
+         <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost_total) %></p></div></td>
+         <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.vatgroup %></p></div></td>
+         <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.whscode %></p></div></td>
+         <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.status %></p></div></td>
+
+       </tr>
+      <% end %>
+     </tbody>
+
+     <tfoot>
+      <tr >
+       <!-- <th scope="col"><div class="d-inline"></div></th> -->
+       <th scope="col"><div class="d-inline"><p>总计</p></div></th>
+       <th scope="col"><div class="d-inline"></div></th>
+       <th scope="col"><div class="d-inline"><p class="text-right"><%=  @casework.sum_quan_total %></p></div></th>
+       <th scope="col"><div class="d-inline"><p class="text-right"></p></div></th>
+       <th scope="col"><div class="d-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_price_total) %></p></div></th>
+       <th scope="col"><div class="d-none d-sm-inline"></div></th>
+       <th scope="col"><div class="d-none d-sm-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_cost_total) %></p></div></th>
+       <th scope="col"><div class="d-none d-sm-inline"></div></th>
+       <th scope="col"><div class="d-none d-sm-inline"></div></th>
+       <th scope="col"><div class="d-none d-sm-inline"></div></th>
+
+
+      </tr>
+     </tfoot>
+    </table>
+  </div>
+
+</div>

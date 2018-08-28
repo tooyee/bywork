@@ -83,8 +83,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status, id: :casework_status %>
+  <%= form.label :status %>
+  <%= form.select :status, Casework.statuses.keys,
+                prompt: "select a type"%>
   </div>
 
   <div class="field">

@@ -23,6 +23,13 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
+
+  resources :caseworks do
+    resources :caseworklines
+    # get 'clone', on: :member
+    # get 'copyform', on: :member
+  end
+
   # get 'admin/index'
   #
   # get 'sessions/new'
