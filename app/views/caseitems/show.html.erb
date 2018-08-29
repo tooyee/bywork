@@ -1,77 +1,80 @@
 <p id="notice"><%= notice %></p>
-<div class="card-header  border-first">
-    <div class="card-block">
-      <h5 class="card-title"><%= @caseitem.flowitem.name %>: <%= @caseitem.id %></h5>
-      <div class="p-1 form-group row">
-        <div class="col-sm-4">代码：<%= @caseitem.code %></div>
-        <div class="col-sm-4">名称：<%= @caseitem.name %></div>
-        <div class="col-sm-4">状态：<%= @caseitem.status %></div>
-        <div class="col-sm-4">日期：<%= @caseitem.created_at.to_s(:mdy) %></div>
-        <div class="col-sm-4">备注：<%= @caseitem.remarks %></div>
-        <div class="col-sm-4 d-none d-sm-block">桌面显示</div>
+<div  class="card bg-light mb-3">
+  <div class="card-header bg-transparent border-first">
+      <div class="card-block">
+        <h6 class="card-title"><%= @caseitem.flowitem.name %>: <%= @caseitem.id %></h6>
+        <div class="p-1 form-group row">
+          <div class="col-sm-4"><p>代码：<%= @caseitem.code %></p></div>
+          <div class="col-sm-4"><p>名称：<%= @caseitem.name %></p></div>
+          <div class="col-sm-4"><p>状态：<%= @caseitem.status %></p></div>
+          <div class="col-sm-4"><p>日期：<%= @caseitem.created_at.to_s(:mdy) %></p></div>
+          <div class="col-sm-4"><p>备注：<%= @caseitem.remarks %></p></div>
+          <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
+        </div>
       </div>
+    </div>
+
+  <div class="card-body text-first border-first">
+    <!-- casedeal -->
+    <ul id="mytab" class="nav nav-pills flex-sm-row">
+      <% @caseitem.casedeals.each do |casedeal| %>
+        <% if casedeal.floworderid == 1 %>
+            <li  class="nav-item">
+              <a class="nav-link active show" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
+            </li>
+         <% else %>
+           <li  class="nav-item">
+             <a class="nav-link" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
+           </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <p></p>
+    <!-- casedeal pane -->
+    <div class="tab-content">
+      <% @caseitem.casedeals.each do |casedeal| %>
+        <% if casedeal.floworderid == 1 %>
+          <div class="tab-pane active" id="<%= casedeal.name %>"><!--2 每个交易下的活动集 -->   <!--3 每个活动标题下的实例活动 -->
+         <% else %>
+          <div class="tab-pane" id="<%= casedeal.name %>">
+        <% end %>
+        <table>
+          <tbody>
+            <!-- caseflowwork -->
+            <tr>
+              <% casedeal.caseflowworks.each do |caseflowwork| %>
+                <td>
+                  <div class="d-flex align-items-start flex-column" style="height: 200px;">
+                      <div class="btn-info btn-sm" >
+                        <h7>
+                          <%= caseflowwork.name %>
+                        </h7>
+                      </div>
+                      <p></p>
+                      <div >
+                        <!-- casework -->
+                        <% caseflowwork.caseworks.each do |casework| %>
+                          <div class="btn btn-danger btn-sm">
+                            <% casework.name %>
+                            <span class="badge badge-light"><%= link_to casework.id, casework %></span>
+
+                          </div><p></p>
+                        <% end %>
+                      </div>
+                  </div>
+                </td>
+              <% end %>
+            </tr>
+
+          </tbody>
+        </table>
+          </div>
+      <% end %>
     </div>
   </div>
 
-<div class="card-body text-first border-first">
-  <!-- casedeal -->
-  <ul id="mytab" class="nav nav-pills flex-sm-row">
-    <% @caseitem.casedeals.each do |casedeal| %>
-      <% if casedeal.floworderid == 1 %>
-          <li  class="nav-item">
-            <a class="nav-link active show" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
-          </li>
-       <% else %>
-         <li  class="nav-item">
-           <a class="nav-link" href="#<%= casedeal.name %>" data-toggle="tab"><%= casedeal.name %></a>
-         </li>
-      <% end %>
-    <% end %>
-  </ul>
-  <p></p>
-  <!-- casedeal pane -->
-  <div class="tab-content">
-    <% @caseitem.casedeals.each do |casedeal| %>
-      <% if casedeal.floworderid == 1 %>
-        <div class="tab-pane active" id="<%= casedeal.name %>"><!--2 每个交易下的活动集 -->   <!--3 每个活动标题下的实例活动 -->
-       <% else %>
-        <div class="tab-pane" id="<%= casedeal.name %>">
-      <% end %>
-      <table>
-        <tbody>
-          <!-- caseflowwork -->
-          <tr>
-            <% casedeal.caseflowworks.each do |caseflowwork| %>
-              <td>
-                <div class="d-flex align-items-start flex-column" style="height: 200px;">
-                    <div class="btn-info btn-sm" >
-                      <h7>
-                        <%= caseflowwork.name %>
-                      </h7>
-                    </div>
-                    <p></p>
-                    <div >
-                      <!-- casework -->
-                      <% caseflowwork.caseworks.each do |casework| %>
-                        <div class="btn btn-danger btn-sm">
-                          <% casework.name %>
-                          <span class="badge badge-light"><%= casework.id %></span>
-                        </div><p></p>
-                      <% end %>
-                    </div>
-                </div>
-              </td>
-            <% end %>
-          </tr>
-
-        </tbody>
-      </table>
-        </div>
-    <% end %>
+  <div class="card-footer bg-transparent border-first">
+    <%= link_to 'Edit', edit_caseitem_path(@caseitem) %> |
+    <%= link_to 'Back', caseitems_path %>
   </div>
-</div>
-
-<div class="card-footer bg-transparent border-first">
-  <%= link_to 'Edit', edit_caseitem_path(@caseitem) %> |
-  <%= link_to 'Back', caseitems_path %>
 </div>

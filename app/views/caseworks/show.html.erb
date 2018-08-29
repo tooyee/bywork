@@ -1,8 +1,7 @@
-<%= link_to 'Edit', edit_casework_path(@casework) %> |
-<%= link_to 'Back', caseworks_path %>
 
-<div  class="card bg-light mb-3">
   <p id="notice"><%= notice %></p>
+<div  class="card bg-light mb-3">
+
   <div class="card-header bg-transparent border-first">
     <div class="card-block">
       <h6 class="card-title"><%= @casework.name %>: <%= @casework.id %></h6>
@@ -76,6 +75,11 @@
       </tr>
      </tfoot>
     </table>
+  </div>
+
+  <div class="card-footer bg-transparent border-first">
+    <%= link_to 'Edit', edit_casework_path(@casework) %> |
+    <%= link_to 'Back', caseworks_path %>
   </div>
 
 </div>
