@@ -1,4 +1,6 @@
+<p id="notice"><%= notice %></p>
 <%= form_with(model: casework, local: true) do |form| %>
+
   <% if casework.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(casework.errors.count, "error") %> prohibited this casework from being saved:</h2>
@@ -16,7 +18,6 @@
         <div class="card-block">
          <h6>Casework Edit</h6>
         </div>
-
     </div>
     <!-- casework -->
     <div class="card-header bg-transparent border-first">
@@ -61,13 +62,7 @@
               </p>
             </div>
 
-            <div class="col-sm-4">
-              <p>
-                <%= form.label :salesid %>
-                <%= form.select :salesid,
-                Esse.all.collect {|p| [ p.name, p.id ] } %>
-              </p>
-            </div>
+
             <div class="col-sm-4">
               <p>
                 <%= form.label :status %>
@@ -76,13 +71,7 @@
               </p>
             </div>
 
-            <div class="col-sm-4">
-              <p>
-                <%= form.label :remarks %>
-                <%= form.text_area :remarks, id: :casework_remarks %>
-              </p>
 
-            </div>
 
         </div>
       </div>
@@ -124,7 +113,10 @@
            <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.vatgroup %></p></div></td>
            <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.whscode %></p></div></td>
            <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.status %></p></div></td>
-
+           <td><%= link_to 'Destroy', [caseworkline.casework,caseworkline],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' } %>
+           </td>
          </tr>
         <% end %>
        </tbody>
@@ -144,21 +136,38 @@
          <th scope="col"><div class="d-none d-sm-inline"></div></th>
 
         </tr>
+
        </tfoot>
+
       </table>
     </div>
 
+    <div class="card-footer bg-transparent border-first">
+      <div class="p-1 form-group row">
+        <div class="col-sm-4">
+          <p>
+            <%= form.label :salesid %>
+            <%= form.select :salesid,
+            Esse.all.collect {|p| [ p.name, p.id ] } %>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p>
+            <%= form.label :remarks %>
+            <%= form.text_area :remarks, id: :casework_remarks %>
+          </p>
+        </div>
+        <label class="col-sm-2 col-form-label">备注</label>
+        <div class="col-sm-9">
+          <%= form.text_field :remarks %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
 <!-- caseworkline -->
 
-<div type="hidden" class="col-sm-4">
-  Casework：<%= form.select :active_id,
-  Casework.all.collect {|p| [ p.name, p.id ] } %>
-</div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
   </div>
-
 
 <% end %>

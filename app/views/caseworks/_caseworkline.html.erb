@@ -1,66 +1,72 @@
-
 <%= form_for([@casework, @casework.caseworklines.build]) do |form| %>
+<p id="notice"><%= notice %></p>
+<% if @casework.caseworklines.build.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@casework.caseworklines.build.errors.count, "error") %> prohibited this caseworkline from being saved:</h2>
 
+    <ul>
+    <% @casework.caseworklines.build.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :casework_id %>
-    <%= form.text_field :casework_id, id: :caseworkline_casework_id %>
+<div type="hidden"  class="card-block">
+  <h6 class="card-title">行明细</h6>
+  <div class="d-flex flex-column flex-sm-row-2">
+    <div class="p-1 form-group row">
+      <div type="hidden" class="col-sm-4">
+        活动：<%= form.select :casework_id,
+        Casework.all.collect {|p| [ p.name, p.id ] } %>
+      </div>
+      <div class="col-sm-4 ">
+        项目：<%= form.select :caseitem_id,
+        Caseitem.all.collect {|p| [ p.name, p.id ] } %>
+      </div>
+      <div class="col-sm-4 ">
+        资源：<td class="rlcode"><%= form.select :esse_id,
+        Esse.all.collect {|p| [ p.name, p.id ] },
+                      prompt: "esse name" %>
+      </div>
+      <div class="col-sm-4 ">
+        数量：<td class="rlquan"><%= form.number_field :quantity, id: :resourcesline_quantity %></td>
+      </div>
+      <div class="col-sm-4 ">
+        价格：<td class="rlpric"><%= form.text_field :price, id: :resourcesline_price %></td>
+      </div>
+      <div class="col-sm-4 ">
+        成本：<td class="rlcost"><%= form.text_field :cost, id: :resourcesline_cost %></td>
+      </div>
+      <div class="col-sm-4 ">
+        税率：<td class="rlvatg"><%= form.select :vatgroup, Caseworkline.vatgroups.keys%></td>
+      </div>
+      <div class="col-sm-4 ">
+        仓库：<td class="rlwhsc"><%= form.number_field :whscode, id: :resourcesline_whscode %></td>
+      </div>
+      <div class="col-sm-4 ">
+        状态：<td class="rlstat"><%= form.select :status, Caseworkline.statuses.keys%></td>
+      </div>
+      <div class="col-sm-4 ">
+        未清：<td class="rlquan">
+          <%= form.number_field :openqty, id: :caseworkline_openqty %>
+        </td>
+      </div>
+      <div class="col-sm-4 ">
+        基础：<td class="rlquan">
+          <%= form.number_field :baseid, id: :caseworkline_baseid %>
+        </td>
+      </div>
+
+      <div class="col-sm-4 ">
+        <!-- <% form.submit %> -->
+        <!-- <button type="submit" class="btn btn-primary">新增行</button> -->
+      </div>
+
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :caseitem_id %>
-    <%= form.text_field :caseitem_id, id: :caseworkline_caseitem_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :esse_id %>
-    <%= form.text_field :esse_id, id: :caseworkline_esse_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, id: :caseworkline_quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :caseworkline_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.text_field :cost, id: :caseworkline_cost %>
-  </div>
-
-
-
-  <div class="field">
-  <%= form.label :vatgroup %>
-  <%= form.select :vatgroup, Caseworkline.vatgroups.keys,
-                prompt: "select a type"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :whscode %>
-    <%= form.number_field :whscode, id: :caseworkline_whscode %>
-  </div>
-
-
-  <div class="field">
-  <%= form.label :status %>
-  <%= form.select :status, Caseworkline.statuses.keys,
-                prompt: "select a type"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :openqty %>
-    <%= form.number_field :openqty, id: :caseworkline_openqty %>
-  </div>
-
-  <div class="field">
-    <%= form.label :baseid %>
-    <%= form.number_field :baseid, id: :caseworkline_baseid %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

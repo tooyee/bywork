@@ -24,25 +24,34 @@ class CaseworklinesController < ApplicationController
   # POST /caseworklines
   # POST /caseworklines.json
   def create
-    @caseworkline = Caseworkline.new(caseworkline_params)
-
-    respond_to do |format|
-      if @caseworkline.save
-        format.html { redirect_to @caseworkline, notice: 'Caseworkline was successfully created.' }
-        format.json { render :show, status: :created, location: @caseworkline }
-      else
-        format.html { render :new }
-        format.json { render json: @caseworkline.errors, status: :unprocessable_entity }
-      end
-    end
+    @casework = Casework.find(params[:casework_id])
+    @caseworkline = @casework.caseworklines.create(caseworkline_params)
+    #redirect_to actives_path(@active)
+    # redirect_to @active
+    redirect_to edit_casework_path(@casework)
   end
+
+  # def create old
+  #   @caseworkline = Caseworkline.new(caseworkline_params)
+  #
+  #   respond_to do |format|
+  #     if @caseworkline.save
+  #       format.html { redirect_to @caseworkline, notice: 'Caseworkline was successfully created.' }
+  #       format.json { render :show, status: :created, location: @caseworkline }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @caseworkline.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /caseworklines/1
   # PATCH/PUT /caseworklines/1.json
   def update
+    @casework=Casework.find(caseworkline_params[:casework_id])
     respond_to do |format|
       if @caseworkline.update(caseworkline_params)
-        format.html { redirect_to @caseworkline, notice: 'Caseworkline was successfully updated.' }
+        format.html { redirect_to edit_casework_path(@casework), notice: 'Caseworkline was successfully updated.' }
         format.json { render :show, status: :ok, location: @caseworkline }
       else
         format.html { render :edit }

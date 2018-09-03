@@ -16,7 +16,7 @@
           <% @casework.caseflowwork.casedeal.caseflowworks.each do |caseflowwork| %>
            <% if caseflowwork.name == @casework.caseflowwork.name %>
              <!-- <button type="button" class="btn btn-light btn-sm"> -->
-               <span class="btn-info btn-sm"><%= caseflowwork.name %>|</span>
+               <span class="btn-info btn-sm"><%= caseflowwork.name %></span> |
              <!-- </button> -->
            <% else %>
              <%= caseflowwork.name %> |
@@ -34,7 +34,7 @@
         <div class="col-sm-4"><p><%= @casework.sell.code %>：<%= @casework.sell.name %></p></div>
 
         <div class="col-sm-4"><p>状态：<%= @casework.status %></p></div>
-        
+
         <div class="col-sm-4"><p>日期：<%= @casework.created_at.to_s(:mdy) %></p></div>
         <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
       </div>
@@ -70,7 +70,7 @@
          <td><div class="d-inline"><%= caseworkline.esse.name %></div></td>
          <td><div class="d-inline"><p class="text-right"><%= caseworkline.quantity %></p></div></td>
          <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price) %></p></div></td>
-         <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price_total) %></p></div></td>
+         <td><div class="d-inline"><p class="text-right"><%= number_to_currency(sprintf("%0.02f",caseworkline.price_total)) %></p></div></td>
 
          <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost) %></p></div></td>
          <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost_total) %></p></div></td>
