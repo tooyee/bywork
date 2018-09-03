@@ -1,0 +1,68 @@
+
+<%= form_for([@casework, @casework.caseworklines.build]) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :casework_id %>
+    <%= form.text_field :casework_id, id: :caseworkline_casework_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caseitem_id %>
+    <%= form.text_field :caseitem_id, id: :caseworkline_caseitem_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esse_id %>
+    <%= form.text_field :esse_id, id: :caseworkline_esse_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, id: :caseworkline_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :caseworkline_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.text_field :cost, id: :caseworkline_cost %>
+  </div>
+
+
+
+  <div class="field">
+  <%= form.label :vatgroup %>
+  <%= form.select :vatgroup, Caseworkline.vatgroups.keys,
+                prompt: "select a type"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :whscode %>
+    <%= form.number_field :whscode, id: :caseworkline_whscode %>
+  </div>
+
+
+  <div class="field">
+  <%= form.label :status %>
+  <%= form.select :status, Caseworkline.statuses.keys,
+                prompt: "select a type"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :openqty %>
+    <%= form.number_field :openqty, id: :caseworkline_openqty %>
+  </div>
+
+  <div class="field">
+    <%= form.label :baseid %>
+    <%= form.number_field :baseid, id: :caseworkline_baseid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

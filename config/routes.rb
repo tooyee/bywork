@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :caseworklines
+
   resources :caseworks
-  resources :caseflowworks
-  resources :esselines
-  resources :esses
-  resources :casedeals
-  resources :caseitems
-  resources :flowworks
-  resources :flowdeals
-  resources :flowitems
-  resources :unitworks
-  resources :unitdeals
-  resources :unititems
+
+  resources :esses, :esselines
+
+  resources :caseitems, :casedeals, :caseflowworks, :caseworks, :caseworklines
+
+  resources :flowitems, :flowdeals, :flowworks
+
+  resources :unititems, :unitdeals, :unitworks
   resources :roleconfigs
   resources :roles
   get 'admin' => 'admin#index'

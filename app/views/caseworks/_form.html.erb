@@ -2,7 +2,6 @@
   <% if casework.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(casework.errors.count, "error") %> prohibited this casework from being saved:</h2>
-
       <ul>
       <% casework.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,89 +10,155 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :code %>
-    <%= form.text_field :code, id: :casework_code %>
+  <div  class="card bg-light mb-3">
+    <!-- caseitem_casedeal for name -->
+    <div class="card-header  border-first">
+        <div class="card-block">
+         <h6>Casework Edit</h6>
+        </div>
+
+    </div>
+    <!-- casework -->
+    <div class="card-header bg-transparent border-first">
+      <div class="card-block border-0">
+        <div class="p-1 form-group row">
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :code %>
+                <%= form.text_field :code, id: :casework_code %>
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :name %>
+                <%= form.text_field :name, id: :casework_name %>
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :caseflowwork_id %>
+                <%= form.select :caseflowwork_id,
+                @casework.caseflowwork.casedeal.caseflowworks
+                .order("casedeal_id").all.collect {|p|
+                  [ p.casedeal.caseitem.name+"-"+
+                    p.casedeal.name+"-"+
+                    p.name, p.id ] } %>
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :buyid %>
+                <%= form.select :buyid,
+                Esse.all.collect {|p| [ p.name, p.id ] } %>
+              </div>
+              </p>
+
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :sellid %>
+                <%= form.select :sellid,
+                Esse.all.collect {|p| [ p.name, p.id ] } %>
+              </p>
+            </div>
+
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :salesid %>
+                <%= form.select :salesid,
+                Esse.all.collect {|p| [ p.name, p.id ] } %>
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :status %>
+                <%= form.select :status,
+                Casework.statuses.keys, prompt: "select a type"%>
+              </p>
+            </div>
+
+            <div class="col-sm-4">
+              <p>
+                <%= form.label :remarks %>
+                <%= form.text_area :remarks, id: :casework_remarks %>
+              </p>
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body text-first border-first">
+      <table class="table table-sm table-striped">
+       <thead class="thead-dark">
+        <tr>
+          <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+          <th><p class="d-inline ">代码</p></th>
+          <th><p class="d-inline ">资源</p></th>
+          <th><p class="d-inline ">数量</p></th>
+          <th><p class="d-inline">价格</p></th>
+          <th><p class="d-inline ">合计</p></th>
+          <th><p class="p-0 d-none d-sm-inline ">成本价</p></th>
+          <th><p class="p-0 d-none d-sm-inline ">成本合计</p></th>
+          <th><p class="d-none d-sm-inline ">税率</p></th>
+          <th><p class="d-none d-sm-inline ">仓库</p></th>
+          <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+        </tr>
+       </thead>
+
+       <tbody>
+        <% @casework.caseworklines.each do |caseworkline| %>
+         <tr>
+           <td>
+             <div class="d-inline">
+               <%= link_to caseworkline.esse.code, edit_casework_caseworkline_path(caseworkline.casework, caseworkline)  %>
+             </div>
+           </td>
+           <td><div class="d-inline"><%= caseworkline.esse.name %></div></td>
+           <td><div class="d-inline"><p class="text-right"><%= caseworkline.quantity %></p></div></td>
+           <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price) %></p></div></td>
+           <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price_total) %></p></div></td>
+
+           <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost) %></p></div></td>
+           <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost_total) %></p></div></td>
+           <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.vatgroup %></p></div></td>
+           <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.whscode %></p></div></td>
+           <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.status %></p></div></td>
+
+         </tr>
+        <% end %>
+       </tbody>
+
+       <tfoot>
+        <tr >
+         <!-- <th scope="col"><div class="d-inline"></div></th> -->
+         <th scope="col"><div class="d-inline"><p>总计</p></div></th>
+         <th scope="col"><div class="d-inline"></div></th>
+         <th scope="col"><div class="d-inline"><p class="text-right"><%=  @casework.sum_quan_total %></p></div></th>
+         <th scope="col"><div class="d-inline"><p class="text-right"></p></div></th>
+         <th scope="col"><div class="d-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_price_total) %></p></div></th>
+         <th scope="col"><div class="d-none d-sm-inline"></div></th>
+         <th scope="col"><div class="d-none d-sm-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_cost_total) %></p></div></th>
+         <th scope="col"><div class="d-none d-sm-inline"></div></th>
+         <th scope="col"><div class="d-none d-sm-inline"></div></th>
+         <th scope="col"><div class="d-none d-sm-inline"></div></th>
+
+        </tr>
+       </tfoot>
+      </table>
+    </div>
+
+<!-- caseworkline -->
+
+<div type="hidden" class="col-sm-4">
+  Casework：<%= form.select :active_id,
+  Casework.all.collect {|p| [ p.name, p.id ] } %>
+</div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :casework_name %>
-  </div>
 
-
-  <div class="field">
-    <%= form.label :caseflowwork_id %>
-    <%= form.select :caseflowwork_id,
-    Caseflowwork.all.collect {|p| [ p.name, p.id ] } %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :buyid %>
-    <%= form.select :buyid, Esse.all.collect {|p| [ p.name, p.id ] } %>
-  </div>
-
-  <div class="field">
-    <%= form.label :buycode %>
-    <%= form.text_field :buycode, id: :casework_buycode %>
-  </div>
-
-  <div class="field">
-    <%= form.label :buyname %>
-    <%= form.text_field :buyname, id: :casework_buyname %>
-  </div>
-
-  <!-- <div class="field">
-    <%= form.label :sellid %>
-    <%= form.number_field :sellid, id: :casework_sellid %>
-  </div> -->
-  <div class="field">
-    <%= form.label :sellid %>
-    <%= form.select :sellid, Esse.all.collect {|p| [ p.name, p.id ] } %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sellcode %>
-    <%= form.text_field :sellcode, id: :casework_sellcode %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sellname %>
-    <%= form.text_field :sellname, id: :casework_sellname %>
-  </div>
-
-  <!-- <div class="field">
-    <%= form.label :salesid %>
-    <%= form.number_field :salesid, id: :casework_salesid %>
-  </div> -->
-  <div class="field">
-    <%= form.label :salesid %>
-    <%= form.select :salesid, Esse.all.collect {|p| [ p.name, p.id ] } %>
-  </div>
-
-  <div class="field">
-    <%= form.label :salescode %>
-    <%= form.text_field :salescode, id: :casework_salescode %>
-  </div>
-
-  <div class="field">
-    <%= form.label :salesname %>
-    <%= form.text_field :salesname, id: :casework_salesname %>
-  </div>
-
-  <div class="field">
-  <%= form.label :status %>
-  <%= form.select :status, Casework.statuses.keys,
-                prompt: "select a type"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :remarks %>
-    <%= form.text_area :remarks, id: :casework_remarks %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

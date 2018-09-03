@@ -1,15 +1,40 @@
 
   <p id="notice"><%= notice %></p>
-<div  class="card bg-light mb-3">
 
+<div  class="card bg-light mb-3">
+  <!-- caseitem_casedeal for name -->
+  <div class="card-header  border-first">
+      <div class="card-block">
+        <h6 class="card-title">
+          <span class="btn-info btn-sm">
+            <%= link_to @casework.caseflowwork.casedeal.caseitem.name,
+            caseitem_path(@casework.caseflowwork.casedeal.caseitem) %>
+          </span>
+           - <%= @casework.caseflowwork.casedeal.name %> - <%= @casework.name %>:<%= @casework.id %>
+        </h6>
+        <h6 class="card-title">
+          <% @casework.caseflowwork.casedeal.caseflowworks.each do |caseflowwork| %>
+           <% if caseflowwork.name == @casework.caseflowwork.name %>
+             <!-- <button type="button" class="btn btn-light btn-sm"> -->
+               <span class="btn-info btn-sm"><%= caseflowwork.name %>|</span>
+             <!-- </button> -->
+           <% else %>
+             <%= caseflowwork.name %> |
+           <% end %>
+          <% end %>
+        </h6>
+      </div>
+
+  </div>
+  <!-- casework -->
   <div class="card-header bg-transparent border-first">
-    <div class="card-block">
-      <h6 class="card-title"><%= @casework.name %>: <%= @casework.id %></h6>
+    <div class="card-block border-0">
       <div class="p-1 form-group row">
         <div class="col-sm-4"><p><%= @casework.buy.code %>：<%= @casework.buy.name %></p></div>
         <div class="col-sm-4"><p><%= @casework.sell.code %>：<%= @casework.sell.name %></p></div>
-        <div class="col-sm-4"><p><%= @casework.sales.code %>：<%= @casework.sales.name %></p></div>
+
         <div class="col-sm-4"><p>状态：<%= @casework.status %></p></div>
+        
         <div class="col-sm-4"><p>日期：<%= @casework.created_at.to_s(:mdy) %></p></div>
         <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
       </div>
@@ -78,8 +103,16 @@
   </div>
 
   <div class="card-footer bg-transparent border-first">
+    <div class="p-1 form-group row">
+
+      <div class="col-sm-4"><p><%= @casework.sales.code %>：<%= @casework.sales.name %></p></div>
+
+      <div class="col-sm-4"><p>备注：<%= @casework.remarks %></p></div>
+
+    </div>
     <%= link_to 'Edit', edit_casework_path(@casework) %> |
-    <%= link_to 'Back', caseworks_path %>
+    <!-- <%= link_to 'Back', caseworks_path %> -->
+    <%= link_to 'Back', caseitem_path(@casework.caseflowwork.casedeal.caseitem) %>
   </div>
 
 </div>

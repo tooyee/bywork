@@ -1,6 +1,8 @@
-<h1>Editing Casework</h1>
 
 <%= render 'form', casework: @casework %>
 
-<%= link_to 'Show', @casework %> |
-<%= link_to 'Back', caseworks_path %>
+<div class="card-footer bg-transparent border-first">
+  <%= render "caseworks/caseworkline" %>
+  <%= link_to 'Show', @casework %> |
+  <%= link_to 'Back', caseworks_path %>
+</div>

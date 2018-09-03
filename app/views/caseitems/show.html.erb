@@ -1,22 +1,28 @@
 <p id="notice"><%= notice %></p>
-<div  class="card bg-light mb-3">
-  <div class="card-header bg-transparent border-first">
+<div  class="card  mb-3">
+  <!-- caseitem_title -->
+  <div class="card-header  border-first">
       <div class="card-block">
-        <h6 class="card-title"><%= @caseitem.flowitem.name %>: <%= @caseitem.id %></h6>
-        <div class="p-1 form-group row">
-          <div class="col-sm-4"><p>代码：<%= @caseitem.code %></p></div>
-          <div class="col-sm-4"><p>名称：<%= @caseitem.name %></p></div>
-          <div class="col-sm-4"><p>状态：<%= @caseitem.status %></p></div>
-          <div class="col-sm-4"><p>日期：<%= @caseitem.created_at.to_s(:mdy) %></p></div>
-          <div class="col-sm-4"><p>备注：<%= @caseitem.remarks %></p></div>
-          <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
-        </div>
+        <h6 class="card-title">
+          <%= @caseitem.name %>: <%= @caseitem.id %>
+        </h6>
       </div>
-    </div>
+  </div>
+  <!-- caseitem -->
+  <div class="card-body">
+      <div class="p-1 form-group row">
+        <div class="col-sm-4"><p>代码：<%= @caseitem.code %></p></div>
+        <div class="col-sm-4"><p>名称：<%= @caseitem.name %></p></div>
+        <div class="col-sm-4"><p>状态：<%= @caseitem.status %></p></div>
+        <div class="col-sm-4"><p>日期：<%= @caseitem.created_at.to_s(:mdy) %></p></div>
+        <div class="col-sm-4"><p>备注：<%= @caseitem.remarks %></p></div>
+        <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
+      </div>
+      </div>
 
-  <div class="card-body text-first border-first">
+  <div class="card-body ">
     <!-- casedeal -->
-    <ul id="mytab" class="nav nav-pills flex-sm-row">
+    <ul id="mytab" class="nav nav-tabs flex-sm-row">
       <% @caseitem.casedeals.each do |casedeal| %>
         <% if casedeal.floworderid == 1 %>
             <li  class="nav-item">
@@ -28,8 +34,8 @@
            </li>
         <% end %>
       <% end %>
-    </ul>
-    <p></p>
+    </ul><p></p>
+
     <!-- casedeal pane -->
     <div class="tab-content">
       <% @caseitem.casedeals.each do |casedeal| %>
