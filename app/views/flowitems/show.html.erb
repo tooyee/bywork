@@ -1,25 +1,147 @@
 <p id="notice"><%= notice %></p>
+<div  class="card  mb-3">
+  <!-- flowitem_title -->
+  <div class="card-header  border-first">
+      <div class="card-block">
+        <h6 class="card-title">
+          <%= @flowitem.name %>: <%= @flowitem.id %>
+          <%= link_to 'Edit', edit_flowitem_path(@flowitem) %> |
+          <%= link_to 'Back', flowitems_path %>
+        </h6>
+      </div>
+  </div>
+  <!-- flowitem -->
+  <div class="card-body">
+      <div class="p-1 form-group row">
+        <div class="col-sm-4"><p>代码：<%= @flowitem.code %></p></div>
+        <div class="col-sm-4"><p>代码：<%= @flowitem.name %></p></div>
+        <div class="col-sm-4"><p>代码：<%= @flowitem.remarks %></p></div>
+        <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
+      </div>
+      </div>
+
+  <div class="card-body ">
+    <!-- flowdeal -->
+    <ul id="mytab" class="nav nav-tabs flex-sm-row">
+      <% @flowitem.flowdeals.each do |flowdeal| %>
+      <li  class="nav-item">
+        <% if flowdeal.floworderid == 1 %>
+           <a class="nav-link active show"
+           href="#<%= flowdeal.unitdeal.name %>" data-toggle="tab">
+        <% else %>
+           <a class="nav-link"
+           href="#<%= flowdeal.unitdeal.name %>" data-toggle="tab">
+        <% end %>
+               <%= flowdeal.unitdeal.name %>
+               <%= link_to 'Edit', edit_flowdeal_path(flowdeal) %>
+           </a>
+      </li>
+
+
+      <% end %>
+    </ul><p></p>
+
+    <!-- flowdeal pane -->
+    <div class="tab-content">
+      <% @flowitem.flowdeals.each do |flowdeal| %>
+        <% if flowdeal.floworderid == 1 %>
+          <div class="tab-pane active" id="<%= flowdeal.unitdeal.name %>"><!--2 每个交易下的活动集 -->   <!--3 每个活动标题下的实例活动 -->
+         <% else %>
+          <div class="tab-pane       " id="<%= flowdeal.unitdeal.name %>">
+        <% end %>
+        <table>
+          <tbody>
+            <!-- flowwork -->
+            <tr>
+              <% flowdeal.flowworks.each do |flowwork| %>
+                <td>
+                  <div class="d-flex align-items-start flex-column" style="height: 200px;">
+                      <div class="btn-info btn-sm" >
+                        <h7>
+                          <%= flowwork.unitwork.name %>
+                        </h7>
+                      </div>
+                      <p></p>
+
+                  </div>
+                  <div >
+                    <!-- flowwork pane -->
+                    <!-- <div class="col-sm-4"><p>代码：<%= flowwork.unitwork.code %></p></div> -->
+                    <!-- <div class="col-sm-4"><p>代码：<%= flowwork.unitwork.name %></p></div> -->
+
+                  </div>
+                </td>
+              <% end %>
+            </tr>
+
+          </tbody>
+        </table>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+
+</div>
+
+
 
 <p>
-  <strong>Unititem:</strong>
-  <%= @flowitem.unititem.name %>
 </p>
 
+<table >
+  <thead>
+    <tr>
+      <th>Flow item</th>
+      <th>Unit deal</th>
+      <th>Deal type</th>
 
-<p>
-  <strong>Code:</strong>
-  <%= @flowitem.code %>
-</p>
+      <th>Flow type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @flowitem.flowdeals.order(:floworderid).each do |flowdeal| %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @flowitem.name %>
-</p>
+      <tr>
+        <td><%= flowdeal.flowitem.unititem.name %></td>
+        <td><%= flowdeal.unitdeal.name %></td>
+        <td><%= flowdeal.dealtype %></td>
 
-<p>
-  <strong>Remarks:</strong>
-  <%= @flowitem.remarks %>
-</p>
+        <td><%= flowdeal.flowtype %></td>
+        <td><%= link_to 'Show', flowdeal %></td>
+        <td><%= link_to 'Edit', edit_flowdeal_path(flowdeal) %></td>
+        <td><%= link_to 'D', flowdeal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <table class="table table-striped">
+        <thead class="thead-info">
+          <tr>
+            <th>Flow deal</th>
+            <th>Unit work</th>
+            <th>Accout type</th>
 
-<%= link_to 'Edit', edit_flowitem_path(@flowitem) %> |
-<%= link_to 'Back', flowitems_path %>
+            <th>Flow type</th>
+
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% flowdeal.flowworks.order(:floworderid).each do |flowwork| %>
+            <tr>
+              <td><%= flowwork.flowdeal.unitdeal.name %></td>
+              <td><%= flowwork.unitwork.name %></td>
+              <td><%= flowwork.accouttype %></td>
+
+              <td><%= flowwork.flowtype %></td>
+
+              <td><%= link_to 'Show', flowwork %></td>
+              <td><%= link_to 'Edit', edit_flowwork_path(flowwork) %></td>
+              <td><%= link_to 'D', flowwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% end %>
+  </tbody>
+</table>

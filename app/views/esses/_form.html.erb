@@ -29,9 +29,19 @@
   <div class="field">
   <%= form.label :essetype %>
   <%= form.select :essetype, Esse.essetypes.keys,
-                prompt: "select a type" %>
-</div>
+                prompt: "select a type1" %>
+  </div>
 
+  <!-- <%= form.fields_for :esselines do |esseline_form| %>
+      code:<%= esseline_form.text_field :code %>
+      name:<%= esseline_form.text_field :name %>
+  <% end %> -->
+  <%= form.nested_fields_for :esselines do |esseline_form| %>
+      <%= esseline_form.remove_nested_fields_link %>
+      code:<%= esseline_form.text_field :code %>
+      name:<%= esseline_form.text_field :name %>
+  <% end %>
+  <%= form.add_nested_fields_link :esselines  %>
   <div class="actions">
     <%= form.submit %>
   </div>

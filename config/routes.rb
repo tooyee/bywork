@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
 
-  resources :caseworks
+  # resources :caseworks
 
   resources :esses, :esselines
 
   resources :caseitems, :casedeals, :caseflowworks, :caseworks, :caseworklines
 
-  resources :flowitems, :flowdeals, :flowworks
+  resources :flowdeals, :flowworks
+
+  resources :flowitems do
+    get 'search', on: :collection
+  end
 
   resources :unititems, :unitdeals, :unitworks
   resources :roleconfigs

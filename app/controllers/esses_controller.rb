@@ -15,6 +15,8 @@ class EssesController < ApplicationController
   # GET /esses/new
   def new
     @ess = Esse.new
+    @ess.esselines.build
+
   end
 
   # GET /esses/1/edit
@@ -69,6 +71,6 @@ class EssesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ess_params
-      params.require(:esse).permit(:code, :name, :essetype)
+      params.require(:esse).permit(:code, :name, :essetype, esselines_attributes: [:code], esselines_attributes: [:name])
     end
 end

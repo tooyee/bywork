@@ -7,6 +7,18 @@ class FlowitemsController < ApplicationController
     @flowitems = Flowitem.all
   end
 
+  # GET /flowitems/search
+  def search
+    unless params[:search_id].blank?
+      @flowitems = Flowitem.where(unititem_id: params[:search_id])
+    else
+      @flowitems = Flowitem.all
+    end
+
+    render :index
+
+  end
+
   # GET /flowitems/1
   # GET /flowitems/1.json
   def show

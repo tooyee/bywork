@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Flowitems</h1>
+<h6>
+  <%= form_tag("/flowitems/search", method: "get") do %>
+    <%= label_tag(:search_id, "Unititem") %>
+    <%= select_tag :search_id, options_for_select(Unititem.all.collect {|p| [ p.name,p.id ] }) %>
+    <%= submit_tag("查询") %>
+  <% end %>
+</h6>
 
 <table>
   <thead>
@@ -26,6 +33,8 @@
       </tr>
     <% end %>
   </tbody>
+
+
 </table>
 
 <br>
