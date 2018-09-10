@@ -42,7 +42,7 @@ class FlowdealsController < ApplicationController
   def update
     respond_to do |format|
       if @flowdeal.update(flowdeal_params)
-        format.html { redirect_to flowdeals_url, notice: 'Flowdeal was successfully updated.' }
+        format.html { redirect_to flowitem_url(@flowdeal.flowitem_id), notice: 'Flowdeal was successfully updated.' }
         format.json { render :show, status: :ok, location: @flowdeal }
       else
         format.html { render :edit }

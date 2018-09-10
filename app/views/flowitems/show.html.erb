@@ -5,8 +5,8 @@
       <div class="card-block">
         <h6 class="card-title">
           <%= @flowitem.name %>: <%= @flowitem.id %>
-          <%= link_to 'Edit', edit_flowitem_path(@flowitem) %> |
-          <%= link_to 'Back', flowitems_path %>
+          <%= link_to '，    编辑', edit_flowitem_path(@flowitem) %> |
+          <%= link_to '列表', flowitems_path %>
         </h6>
       </div>
   </div>
@@ -14,8 +14,8 @@
   <div class="card-body">
       <div class="p-1 form-group row">
         <div class="col-sm-4"><p>代码：<%= @flowitem.code %></p></div>
-        <div class="col-sm-4"><p>代码：<%= @flowitem.name %></p></div>
-        <div class="col-sm-4"><p>代码：<%= @flowitem.remarks %></p></div>
+        <div class="col-sm-4"><p>流程：<%= @flowitem.name %></p></div>
+        <div class="col-sm-4"><p>备注：<%= @flowitem.remarks %></p></div>
         <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
       </div>
       </div>
@@ -23,17 +23,18 @@
   <div class="card-body ">
     <!-- flowdeal -->
     <ul id="mytab" class="nav nav-tabs flex-sm-row">
-      <% @flowitem.flowdeals.each do |flowdeal| %>
+      <% @flowitem.flowdeals.order(:floworderid).each do |flowdeal| %>
       <li  class="nav-item">
         <% if flowdeal.floworderid == 1 %>
            <a class="nav-link active show"
-           href="#<%= flowdeal.unitdeal.name %>" data-toggle="tab">
+
         <% else %>
            <a class="nav-link"
-           href="#<%= flowdeal.unitdeal.name %>" data-toggle="tab">
+
         <% end %>
+           href="#<%= flowdeal.unitdeal.name %>" data-toggle="tab" style="width: 100px;">
                <%= flowdeal.unitdeal.name %>
-               <%= link_to 'Edit', edit_flowdeal_path(flowdeal) %>
+               <%= link_to 'D', edit_flowdeal_path(flowdeal) %>
            </a>
       </li>
 
@@ -53,12 +54,12 @@
           <tbody>
             <!-- flowwork -->
             <tr>
-              <% flowdeal.flowworks.each do |flowwork| %>
+              <% flowdeal.flowworks.order(:floworderid).each do |flowwork| %>
                 <td>
                   <div class="d-flex align-items-start flex-column" style="height: 200px;">
                       <div class="btn-info btn-sm" >
                         <h7>
-                          <%= flowwork.unitwork.name %>
+                           <%= link_to flowwork.unitwork.name, edit_flowwork_path(flowwork) %>
                         </h7>
                       </div>
                       <p></p>
@@ -68,7 +69,7 @@
                     <!-- flowwork pane -->
                     <!-- <div class="col-sm-4"><p>代码：<%= flowwork.unitwork.code %></p></div> -->
                     <!-- <div class="col-sm-4"><p>代码：<%= flowwork.unitwork.name %></p></div> -->
-
+编辑内容
                   </div>
                 </td>
               <% end %>
@@ -89,7 +90,7 @@
 <p>
 </p>
 
-<table >
+<!-- <table >
   <thead>
     <tr>
       <th>Flow item</th>
@@ -144,4 +145,4 @@
 
     <% end %>
   </tbody>
-</table>
+</table> -->

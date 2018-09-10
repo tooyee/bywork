@@ -37,9 +37,12 @@
       name:<%= esseline_form.text_field :name %>
   <% end %> -->
   <%= form.nested_fields_for :esselines do |esseline_form| %>
+
       <%= esseline_form.remove_nested_fields_link %>
       code:<%= esseline_form.text_field :code %>
       name:<%= esseline_form.text_field :name %>
+      esselinetype:<%= esseline_form.text_field :esselinetype %>
+      remarks:<%= esseline_form.text_field :remarks %>
   <% end %>
   <%= form.add_nested_fields_link :esselines  %>
   <div class="actions">

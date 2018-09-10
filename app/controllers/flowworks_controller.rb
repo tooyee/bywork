@@ -42,7 +42,7 @@ class FlowworksController < ApplicationController
   def update
     respond_to do |format|
       if @flowwork.update(flowwork_params)
-        format.html { redirect_to flowworks_url, notice: 'Flowwork was successfully updated.' }
+        format.html { redirect_to flowitem_url(@flowwork.flowdeal.flowitem_id), notice: 'Flowwork was successfully updated.' }
         format.json { render :show, status: :ok, location: @flowwork }
       else
         format.html { render :edit }

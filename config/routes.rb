@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :flowdeals, :flowworks
 
   resources :flowitems do
+    resources :flowdeals do
+      resources :flowworks
+    end
     get 'search', on: :collection
   end
 
