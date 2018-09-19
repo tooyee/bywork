@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role: one
+  flowitem: one
+  seltype: 1
+  addtype: 1
+  updtype: 1
+  deltype: 1
+
+two:
+  role: two
+  flowitem: two
+  seltype: 1
+  addtype: 1
+  updtype: 1
+  deltype: 1

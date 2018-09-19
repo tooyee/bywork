@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  resources :dutyworks
+  resources :dutydeals
+  resources :dutyitems
   # resources :caseworks
 
   resources :esses, :esselines

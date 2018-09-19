@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824155513) do
+ActiveRecord::Schema.define(version: 20180918145603) do
 
   create_table "casedeals", force: :cascade do |t|
     t.string "name"
@@ -91,6 +91,45 @@ ActiveRecord::Schema.define(version: 20180824155513) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["caseflowwork_id"], name: "index_caseworks_on_caseflowwork_id"
+  end
+
+  create_table "dutydeals", force: :cascade do |t|
+    t.integer "dutyitem_id"
+    t.integer "flowdeal_id"
+    t.integer "seltype"
+    t.integer "addtype"
+    t.integer "updtype"
+    t.integer "deltype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dutyitem_id"], name: "index_dutydeals_on_dutyitem_id"
+    t.index ["flowdeal_id"], name: "index_dutydeals_on_flowdeal_id"
+  end
+
+  create_table "dutyitems", force: :cascade do |t|
+    t.integer "role_id"
+    t.integer "flowitem_id"
+    t.integer "seltype"
+    t.integer "addtype"
+    t.integer "updtype"
+    t.integer "deltype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flowitem_id"], name: "index_dutyitems_on_flowitem_id"
+    t.index ["role_id"], name: "index_dutyitems_on_role_id"
+  end
+
+  create_table "dutyworks", force: :cascade do |t|
+    t.integer "dutydeal_id"
+    t.integer "flowwork_id"
+    t.integer "seltype"
+    t.integer "addtype"
+    t.integer "updtype"
+    t.integer "deltype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dutydeal_id"], name: "index_dutyworks_on_dutydeal_id"
+    t.index ["flowwork_id"], name: "index_dutyworks_on_flowwork_id"
   end
 
   create_table "esselines", force: :cascade do |t|

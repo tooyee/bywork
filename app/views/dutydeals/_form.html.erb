@@ -1,0 +1,49 @@
+<%= form_with(model: dutydeal, local: true) do |form| %>
+  <% if dutydeal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dutydeal.errors.count, "error") %> prohibited this dutydeal from being saved:</h2>
+
+      <ul>
+      <% dutydeal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :dutyitem_id %>
+    <%= form.select :dutyitem_id, Dutyitem.all.collect {|p| [ p.flowitem.name, p.id ] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flowdeal_id %>
+    <%= form.select :flowdeal_id,
+    Flowdeal.where(flowitem_id: 2).all.collect {|p| [ p.unitdeal.name, p.id ] } %>
+    <!-- dutydeal.dutyitem.flowitem_id -->
+  </div>
+
+  <div class="field">
+    <%= form.label :seltype %>
+    <%= form.select :seltype, Dutyitem.seltypes.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :addtype %>
+    <%= form.select :addtype, Dutyitem.addtypes.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :updtype %>
+    <%= form.select :updtype, Dutyitem.updtypes.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deltype %>
+    <%= form.select :deltype, Dutyitem.deltypes.keys %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

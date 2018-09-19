@@ -1,0 +1,2 @@
+module DutyworksHelper
+end

@@ -1,0 +1,47 @@
+<%= form_with(model: dutyitem, local: true) do |form| %>
+  <% if dutyitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dutyitem.errors.count, "error") %> prohibited this dutyitem from being saved:</h2>
+
+      <ul>
+      <% dutyitem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :role_id %>
+    <%= form.select :role_id, Role.all.collect {|p| [ p.name, p.id ] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flowitem_id %>
+    <%= form.select :flowitem_id, Flowitem.all.collect {|p| [ p.name, p.id ] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seltype %>
+    <%= form.select :seltype, Dutyitem.seltypes.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :addtype %>
+    <%= form.select :addtype, Dutyitem.addtypes.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :updtype %>
+    <%= form.select :updtype, Dutyitem.updtypes.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deltype %>
+    <%= form.select :deltype, Dutyitem.deltypes.keys %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -13,12 +13,13 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
+
   </head>
 
   <body >
     <header>
       <div class="container">
+
         <nav class="navbar navbar-expand-md navbar-light bg-transparent">
           <a class="navbar-brand" href="#"><strong>MyWork</strong>.net</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +27,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href=<%= caseitems_path %>>Item</a>
+              </li>
 
               <% if session[:user_id] %>
               <li class="nav-item dropdown">
@@ -36,6 +40,9 @@
                   <a class="dropdown-item" href=<%= users_path %>>User</a>
                   <a class="dropdown-item" href=<%= roles_path %>>Role</a>
                   <a class="dropdown-item" href=<%= roleconfigs_path %>>Config</a>
+                  <a class="dropdown-item" href=<%= dutyitems_path %>>Dutyitems</a>
+                  <a class="dropdown-item" href=<%= dutydeals_path %>>Dutydeals</a>
+                  <a class="dropdown-item" href=<%= dutyworks_path %>>Dutyworks</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -51,6 +58,7 @@
                   <a class="dropdown-item" href=<%= flowworks_path %>>flow_work</a>
                 </div>
               </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Work
