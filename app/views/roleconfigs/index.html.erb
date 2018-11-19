@@ -7,6 +7,8 @@
     <tr>
       <th>User</th>
       <th>Role</th>
+      <th>created_at</th>
+      <th>updated_at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= roleconfig.user.name %></td>
         <td><%= roleconfig.role.name %></td>
+        <td><%= roleconfig.created_at %></td>
+        <td><%= roleconfig.updated_at %></td>
         <td><%= link_to 'Show', roleconfig %></td>
         <td><%= link_to 'Edit', edit_roleconfig_path(roleconfig) %></td>
         <td><%= link_to 'Destroy', roleconfig, method: :delete, data: { confirm: 'Are you sure?' } %></td>

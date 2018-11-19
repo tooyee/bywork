@@ -4,6 +4,51 @@
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
+<p>
+  <strong>created_at:</strong>
+  <%= @user.created_at %>
+</p>
+<p>
+  <strong>updated_at:</strong>
+  <%= @user.updated_at %>
+</p>
+
+<div class="card-body text-first border-first">
+  <table class="table table-sm table-striped">
+   <thead class="thead-dark">
+    <tr>
+      <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+      <th><p class="d-inline ">id</p></th>
+      <th><p class="d-inline ">role</p></th>
+      <th><p class="d-inline ">created_at</p></th>
+      <th><p class="d-inline">updated_at</p></th>
+
+
+    </tr>
+   </thead>
+
+   <tbody>
+    <% @user.roleconfigs.each do |roleconfigs| %>
+     <tr>
+       <td><div class="d-inline"><%= roleconfigs.role.id %></div></td>
+       <td><div class="d-inline"><%= roleconfigs.role.name %></div></td>
+       <td><div class="d-inline"><%= roleconfigs.role.created_at %></div></td>
+       <td><div class="d-inline"><%= roleconfigs.role.updated_at %></div></td>
+
+
+     </tr>
+    <% end %>
+   </tbody>
+
+   <tfoot>
+    <tr >
+
+
+
+    </tr>
+   </tfoot>
+  </table>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

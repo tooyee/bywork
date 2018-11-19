@@ -11,15 +11,30 @@
     </div>
   <% end %>
 
+  <!-- <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :user_name %>
+  </div> -->
+
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :roleconfig_user_id %>
+    <%= form.select :user_id, User.all.collect {|p| [ p.name, p.id ] } %>
   </div>
+
+  <!-- <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :roleconfig_user_id %>
+  </div> -->
 
   <div class="field">
     <%= form.label :role_id %>
-    <%= form.text_field :role_id, id: :roleconfig_role_id %>
+    <%= form.select :role_id, Role.all.collect {|p| [ p.name, p.id ] } %>
   </div>
+
+  <!-- <div class="field">
+    <%= form.label :role_id %>
+    <%= form.text_field :role_id, id: :roleconfig_role_id %>
+  </div> -->
 
   <div class="actions">
     <%= form.submit %>

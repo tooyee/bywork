@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @roleconfig.user %>
+  <%= @roleconfig.user.name %>
 </p>
 
 <p>
   <strong>Role:</strong>
-  <%= @roleconfig.role %>
+  <%= @roleconfig.role.name %>
 </p>
 
 <%= link_to 'Edit', edit_roleconfig_path(@roleconfig) %> |
