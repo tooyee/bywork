@@ -3,6 +3,11 @@ class Caseitem < ApplicationRecord
   has_many :casedeals
   has_many :caseworklines
 
+  def seltype_caseitems(user_id)
+    @caseitem=Caseitem.where(flowitem_id: 4)
+    # return
+  end
+
   def copy_flowdeals_to_casedeals(caseitem)
     caseitem.flowitem.flowdeals.each do |flowdeal|
       @casedeal = Casedeal.new
@@ -13,7 +18,7 @@ class Caseitem < ApplicationRecord
       @casedeal.flowtype = flowdeal.flowtype
 
       @casedeal.save
-      
+
       flowdeal.flowworks.each do |flowwork|
         @caseflowwork = Caseflowwork.new
         @caseflowwork.code = flowwork.unitwork.code

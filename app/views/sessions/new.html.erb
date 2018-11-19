@@ -1,5 +1,4 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+
 <div class="depot_form">
   <% if flash[:alert] %>
     <p id="notice"><%= flash[:alert] %></p>
@@ -7,7 +6,7 @@
 
   <%= form_tag do %>
     <fieldset>
-      <legend>Please Log In</legend>
+      <!-- <legend>登录</legend> -->
 
       <div>
         <%= label_tag :name, '用户:' %>
@@ -18,9 +17,9 @@
         <%= label_tag :password, '密码:' %>
         <%= password_field_tag :password, params[:password] %>
       </div>
-
+<p></p>
       <div>
-        <%= submit_tag "Login" %>
+        <%= submit_tag "登录" %>
       </div>
     </fieldset>
   <% end %>

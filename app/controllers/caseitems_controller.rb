@@ -5,6 +5,9 @@ class CaseitemsController < ApplicationController
   # GET /caseitems.json
   def index
     @caseitems = Caseitem.all
+    # @caseitems = Caseitem.where(flowitem_id: 4)
+    # get list for caseitems by flowitem_id by role_id by user_id
+    # @caseitem.seltype_caseitems(@caseitem)
   end
 
   # GET /caseitems/1

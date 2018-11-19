@@ -3,20 +3,14 @@
 <html>
   <head>
     <title>MyWork</title>
-    <%= csrf_meta_tags %>
+    <!-- <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  </head>
-
-  <body >
     <header>
       <div class="container">
 
@@ -28,67 +22,79 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href=<%= caseitems_path %>>Item</a>
+                <a class="nav-link" href=<%= caseitems_path %>>项目</a>
               </li>
 
-              <% if session[:user_id] %>
+
+
+              <% if session[:user_name] == "admin" %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Setup
+                  设置
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href=<%= users_path %>>User</a>
-                  <a class="dropdown-item" href=<%= roles_path %>>Role</a>
-                  <a class="dropdown-item" href=<%= roleconfigs_path %>>Config</a>
-                  <a class="dropdown-item" href=<%= dutyitems_path %>>Dutyitems</a>
-                  <a class="dropdown-item" href=<%= dutydeals_path %>>Dutydeals</a>
-                  <a class="dropdown-item" href=<%= dutyworks_path %>>Dutyworks</a>
+                  <a class="dropdown-item" href=<%= users_path %>>用户</a>
+                  <a class="dropdown-item" href=<%= roles_path %>>角色</a>
+                  <a class="dropdown-item" href=<%= roleconfigs_path %>>配置</a>
+                  <a class="dropdown-item" href=<%= dutyitems_path %>>项目职责</a>
+                  <a class="dropdown-item" href=<%= dutydeals_path %>>交易职责</a>
+                  <a class="dropdown-item" href=<%= dutyworks_path %>>工作职责</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Flow
+                  流程
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href=<%= unititems_path %>>unit_item</a>
-                  <a class="dropdown-item" href=<%= unitdeals_path %>>unit_deal</a>
-                  <a class="dropdown-item" href=<%= unitworks_path %>>unit_work</a>
-                  <a class="dropdown-item" href=<%= flowitems_path %>>flow_item</a>
-                  <a class="dropdown-item" href=<%= flowdeals_path %>>flow_deal</a>
-                  <a class="dropdown-item" href=<%= flowworks_path %>>flow_work</a>
+                  <a class="dropdown-item" href=<%= unititems_path %>>项目组件</a>
+                  <a class="dropdown-item" href=<%= unitdeals_path %>>交易组件</a>
+                  <a class="dropdown-item" href=<%= unitworks_path %>>工作组件</a>
+                  <a class="dropdown-item" href=<%= flowitems_path %>>项目流程</a>
+                  <a class="dropdown-item" href=<%= flowdeals_path %>>交易流程</a>
+                  <a class="dropdown-item" href=<%= flowworks_path %>>工作流程</a>
                 </div>
               </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Work
+                  工作
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href=<%= caseitems_path %>>item</a>
-                  <a class="dropdown-item" href=<%= casedeals_path %>>deal</a>
-                  <a class="dropdown-item" href=<%= caseflowworks_path %>>flowwork</a>
-                  <a class="dropdown-item" href=<%= caseworks_path %>>work</a>
-                  <a class="dropdown-item" href=<%= caseworklines_path %>>worklines</a>
-                  <a class="dropdown-item" href=<%= esses_path %>>esse</a>
-                  <a class="dropdown-item" href=<%= esselines_path %>>esselines</a>
+                  <a class="dropdown-item" href=<%= caseitems_path %>>项目</a>
+                  <a class="dropdown-item" href=<%= casedeals_path %>>交易</a>
+                  <a class="dropdown-item" href=<%= caseflowworks_path %>>工作流程</a>
+                  <a class="dropdown-item" href=<%= caseworks_path %>>工作</a>
+                  <a class="dropdown-item" href=<%= caseworklines_path %>>工作明细</a>
+                  <a class="dropdown-item" href=<%= esses_path %>>资源</a>
+                  <a class="dropdown-item" href=<%= esselines_path %>>资源明细</a>
                 </div>
               </li>
+
+
+
+              <% end %>
               <li class="nav-item active">
                 <a class="nav-link" href="users">
-                  <%= button_to 'Logout', logout_path, method: :delete   %>
+                  <%= button_to '退出', logout_path, method: :delete   %>
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item active">
-                <h4><%= session[:user_name] %></h4>
+                  <a class="dropdown-item" href=<%= users_path %> ><%= link_to session[:user_name],user_path(21) %></a>
+
               </li>
 
-              <% end %>
             </ul>
           </div>
         </nav>
       </div>
+
     </header>
+
+  </head>
+
+  <body >
+
 
     <div class="container-fluid">
      <%= yield %>
@@ -96,11 +102,13 @@
 
     <footer class="container">
       <nav class="navbar navbar-expand-md navbar-light bg-transparent">
-        <a class="navbar-brand" href="#">2018©mywork ICP备210037号</a>
+        <a class="navbar-brand" href="#">2018©mywork      icp备210037号</a>
 
       </nav>
     </footer>
-
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   </body>
 </html>

@@ -20,11 +20,36 @@
         <td><%= caseitem.code %></td>
         <td><%= caseitem.name %></td>
         <td><%= caseitem.flowitem.name %></td>
+
         <td><%= caseitem.status %></td>
         <td><%= caseitem.remarks %></td>
-        <td><%= link_to 'Show', caseitem %></td>
-        <td><%= link_to 'Edit', edit_caseitem_path(caseitem) %></td>
-        <td><%= link_to 'Destroy', caseitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%=
+          if (Dutyitem.where(role_id: Roleconfig.where(user_id:session[:user_id]).pluck(:role_id),
+            flowitem_id: caseitem.flowitem_id).limit(1).pluck(:seltype) == ["select_yes"])
+          then link_to 'Show', caseitem
+          else '----'
+          end
+          %>
+        </td>
+        <td><%=
+          if (Dutyitem.where(role_id: Roleconfig.where(user_id:session[:user_id]).pluck(:role_id),
+            flowitem_id: caseitem.flowitem_id).limit(1).pluck(:updtype) == ["update_yes"])
+          then link_to 'Edit', edit_caseitem_path(caseitem)
+          else '----'
+          end
+          %>
+        </td>
+        <td><%=
+          if (Dutyitem.where(role_id: Roleconfig.where(user_id:session[:user_id]).pluck(:role_id),
+            flowitem_id: caseitem.flowitem_id).limit(1).pluck(:deltype) == ["delete_yes"])
+          then link_to 'Des', caseitem, method: :delete, data: { confirm: 'Are you sure?' }
+          else '----'
+          end
+          %>
+        </td>
+
+      
       </tr>
     <% end %>
   </tbody>

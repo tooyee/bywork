@@ -1,0 +1,38 @@
+<p>dutydeal</p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Flowitem</th>
+      <th>Flowdeal</th>
+      <th>Seltype</th>
+      <th>Addtype</th>
+      <th>Updtype</th>
+      <th>Deltype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Dutydeal.all.where(dutyitem_id: 1).each do |dutydeal| %>
+      <tr>
+        <td><%= dutydeal.dutyitem.role.name %></td>
+        <td><%= dutydeal.flowdeal.flowitem.name %></td>
+        <td><%= dutydeal.flowdeal.unitdeal.name %></td>
+        <td><%= dutydeal.seltype %></td>
+        <td><%= dutydeal.addtype %></td>
+        <td><%= dutydeal.updtype %></td>
+        <td><%= dutydeal.deltype %></td>
+        <td><%= link_to 'Show', dutydeal %></td>
+        <td><%= link_to 'Edit', edit_dutydeal_path(dutydeal) %></td>
+        <td><%= link_to 'Destroy', dutydeal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= render plain: @dutyitem_select_id %>
+<%= link_to 'New Dutydeal', new_dutydeal_path %>
