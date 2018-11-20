@@ -14,7 +14,7 @@
         <div class="col-sm-4"><p>代码：<%= @caseitem.code %></p></div>
         <div class="col-sm-4"><p>名称：<%= @caseitem.name %></p></div>
         <div class="col-sm-4"><p>状态：<%= @caseitem.status %></p></div>
-        <div class="col-sm-4"><p>日期：<%= @caseitem.created_at.to_s(:mdy) %></p></div>
+        <div class="col-sm-4"><p>日期：<%= @caseitem.created_at.strftime('%Y-%m-%d') %></p></div>
         <div class="col-sm-4"><p>备注：<%= @caseitem.remarks %></p></div>
         <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
       </div>

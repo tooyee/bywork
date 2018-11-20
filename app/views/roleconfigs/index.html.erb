@@ -1,30 +1,64 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Roleconfigs</h1>
-
-<table>
-  <thead>
+<!-- header -->
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <h1>Roleconfigs</h1>
+  </div>
+</div>
+<!-- body -->
+<div class="card-body text-first border-first">
+  <table class="table table-sm table-striped">
+   <thead class="thead-dark">
     <tr>
+      <th>Id</th>
       <th>User</th>
       <th>Role</th>
       <th>created_at</th>
       <th>updated_at</th>
       <th colspan="3"></th>
     </tr>
+   </thead>
+
+   <tbody>
+     <% @roleconfigs.each do |roleconfig| %>
+       <tr>
+         <td><%= link_to roleconfig.id, roleconfig %></td>
+         <td><%= link_to roleconfig.user.name, edit_roleconfig_path(roleconfig) %></td>
+         <td><%= roleconfig.role.name %></td>
+         <td><%= roleconfig.created_at.strftime('%Y-%m-%d') %></td>
+         <td><%= roleconfig.updated_at.strftime('%Y-%m-%d') %></td>
+
+         <td><%= link_to 'Destroy', roleconfig, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+   </tbody>
+
+   <tfoot>
+    <tr >
+
+    </tr>
+   </tfoot>
+  </table>
+</div>
+<!-- footer -->
+<div class="card-footer bg-transparent border-first">
+
+
+</div>
+
+
+
+
+<table>
+  <thead>
+    <tr>
+
+    </tr>
   </thead>
 
   <tbody>
-    <% @roleconfigs.each do |roleconfig| %>
-      <tr>
-        <td><%= roleconfig.user.name %></td>
-        <td><%= roleconfig.role.name %></td>
-        <td><%= roleconfig.created_at %></td>
-        <td><%= roleconfig.updated_at %></td>
-        <td><%= link_to 'Show', roleconfig %></td>
-        <td><%= link_to 'Edit', edit_roleconfig_path(roleconfig) %></td>
-        <td><%= link_to 'Destroy', roleconfig, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+
   </tbody>
 </table>
 

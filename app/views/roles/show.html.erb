@@ -1,9 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @role.name %>
-</p>
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <p>
+    <strong>Name:</strong>
+    <%= @role.name %>
+    </p>
+    <p>
+    <strong>created_at:</strong>
+    <%= @role.created_at.strftime('%Y年-%m月-%d日 %H时:%M分:%S秒') %>
+    </p>
+    <p>
+    <strong>updated_at:</strong>
+    <%= @role.updated_at.strftime('%Y年-%m月-%d日 %H时:%M分:%S秒') %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+<div class="card-body text-first border-first">
+  <table class="table table-sm table-striped">
+   <thead class="thead-dark">
+    <tr>
+      <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+      <th><p class="d-inline ">id</p></th>
+      <th><p class="d-inline ">role</p></th>
+      <th><p class="d-inline ">created_at</p></th>
+      <th><p class="d-inline">updated_at</p></th>
+    </tr>
+   </thead>
+
+   <tbody>
+    <% @role.roleconfigs.each do |roleconfigs| %>
+     <tr>
+       <td><div class="d-inline"><%= link_to roleconfigs.user.id, roleconfigs.user %></div></td>
+       <td><div class="d-inline"><%= roleconfigs.user.name %></div></td>
+       <td><div class="d-inline"><%= roleconfigs.user.created_at %></div></td>
+       <td><div class="d-inline"><%= roleconfigs.user.updated_at %></div></td>
+     </tr>
+    <% end %>
+   </tbody>
+
+   <tfoot>
+    <tr >
+
+    </tr>
+   </tfoot>
+  </table>
+</div>
+
+<div class="card-footer bg-transparent border-first">
+  <div class="p-1 form-group row">
+
+
+
+  </div>
+  <%= link_to 'Edit', edit_user_path(@role) %> |
+  <%= link_to 'Back', users_path %>
+</div>

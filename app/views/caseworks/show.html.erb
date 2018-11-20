@@ -35,7 +35,7 @@
 
         <div class="col-sm-4"><p>状态：<%= @casework.status %></p></div>
 
-        <div class="col-sm-4"><p>日期：<%= @casework.created_at.to_s(:mdy) %></p></div>
+        <div class="col-sm-4"><p>日期：<%= @casework.created_at.strftime('%Y-%m-%d') %></p></div>
         <div class="col-sm-4 d-none d-sm-block"><p>桌面显示</p></div>
       </div>
     </div>
