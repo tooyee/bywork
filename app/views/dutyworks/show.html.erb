@@ -1,34 +1,46 @@
 <p id="notice"><%= notice %></p>
+<!-- header -->
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <h1>dutywork</h1>
+  </div>
+</div>
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <p>
+      <strong>Flowdeal:</strong>
+      <%= @dutywork.dutydeal.flowdeal.unitdeal.name %>
+    </p>
 
-<p>
-  <strong>Dutydeal:</strong>
-  <%= @dutywork.dutydeal %>
-</p>
+    <p>
+      <strong>Flowwork:</strong>
+      <%= @dutywork.flowwork.unitwork.name %>
+    </p>
 
-<p>
-  <strong>Flowwork:</strong>
-  <%= @dutywork.flowwork %>
-</p>
+    <p>
+      <strong>Seltype:</strong>
+      <%= @dutywork.seltype %>
+    </p>
 
-<p>
-  <strong>Seltype:</strong>
-  <%= @dutywork.seltype %>
-</p>
+    <p>
+      <strong>Addtype:</strong>
+      <%= @dutywork.addtype %>
+    </p>
 
-<p>
-  <strong>Addtype:</strong>
-  <%= @dutywork.addtype %>
-</p>
+    <p>
+      <strong>Updtype:</strong>
+      <%= @dutywork.updtype %>
+    </p>
 
-<p>
-  <strong>Updtype:</strong>
-  <%= @dutywork.updtype %>
-</p>
+    <p>
+      <strong>Deltype:</strong>
+      <%= @dutywork.deltype %>
+    </p>
+  </div>
+</div>
 
-<p>
-  <strong>Deltype:</strong>
-  <%= @dutywork.deltype %>
-</p>
-
-<%= link_to 'Edit', edit_dutywork_path(@dutywork) %> |
-<%= link_to 'Back', dutyworks_path %>
+<!-- footer -->
+<div class="card-footer bg-transparent border-first">
+  <%= link_to 'Edit', edit_dutywork_path(@dutywork) %> |
+  <%= link_to 'Back', dutyworks_path %>
+</div>

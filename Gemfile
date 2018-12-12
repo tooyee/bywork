@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+# 多级树
+gem 'awesome_nested_set'
 # 嵌套表单
 gem 'nested_form_fields'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caseworkesselinemags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Casework</th>
+      <th>Esse</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Esselinetype</th>
+      <th>Remarks</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caseworkesselinemags.each do |caseworkesselinemag| %>
+      <tr>
+        <td><%= caseworkesselinemag.casework %></td>
+        <td><%= caseworkesselinemag.esse %></td>
+        <td><%= caseworkesselinemag.code %></td>
+        <td><%= caseworkesselinemag.name %></td>
+        <td><%= caseworkesselinemag.esselinetype %></td>
+        <td><%= caseworkesselinemag.remarks %></td>
+        <td><%= caseworkesselinemag.status %></td>
+        <td><%= link_to 'Show', caseworkesselinemag %></td>
+        <td><%= link_to 'Edit', edit_caseworkesselinemag_path(caseworkesselinemag) %></td>
+        <td><%= link_to 'Destroy', caseworkesselinemag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caseworkesselinemag', new_caseworkesselinemag_path %>

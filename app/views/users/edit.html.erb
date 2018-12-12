@@ -1,6 +1,15 @@
+<!-- header -->
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
 <h1>Editing User</h1>
+  </div>
+</div>
+
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="card-footer bg-transparent border-first">
+
+  <%= link_to 'Show', @user %> |
+  <%= link_to 'Back', users_path %>
+</div>

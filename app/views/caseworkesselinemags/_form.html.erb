@@ -1,0 +1,52 @@
+<%= form_with(model: caseworkesselinemag, local: true) do |form| %>
+  <% if caseworkesselinemag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(caseworkesselinemag.errors.count, "error") %> prohibited this caseworkesselinemag from being saved:</h2>
+
+      <ul>
+      <% caseworkesselinemag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :casework_id %>
+    <%= form.text_field :casework_id, id: :caseworkesselinemag_casework_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esse_id %>
+    <%= form.text_field :esse_id, id: :caseworkesselinemag_esse_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :caseworkesselinemag_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :caseworkesselinemag_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esselinetype %>
+    <%= form.number_field :esselinetype, id: :caseworkesselinemag_esselinetype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks, id: :caseworkesselinemag_remarks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :caseworkesselinemag_status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

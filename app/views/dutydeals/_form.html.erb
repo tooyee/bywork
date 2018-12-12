@@ -13,13 +13,13 @@
 
   <div class="field">
     <%= form.label :dutyitem_id %>
-    <%= form.select :dutyitem_id, Dutyitem.all.collect {|p| [ p.flowitem.name, p.id ] } %>
+    <%= form.select :dutyitem_id, Dutyitem.all.collect {|p| [ p.role.name + p.flowitem.name, p.id ] } %>
   </div>
 
   <div class="field">
     <%= form.label :flowdeal_id %>
     <%= form.select :flowdeal_id,
-    Flowdeal.where(flowitem_id: 2).all.collect {|p| [ p.unitdeal.name, p.id ] } %>
+    Flowdeal.all.collect {|p| [ p.unitdeal.name, p.id ] } %>
     <!-- dutydeal.dutyitem.flowitem_id -->
   </div>
 

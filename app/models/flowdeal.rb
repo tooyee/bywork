@@ -2,7 +2,8 @@ class Flowdeal < ApplicationRecord
 
   enum dealtype: {
       "Sale"        => 1,
-      "Purchase"    => 2
+      "Purchase"    => 2,
+      "manager"     => 3
     }
     validates :dealtype, inclusion: dealtypes.keys
 

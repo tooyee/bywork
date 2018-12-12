@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  casework: one
+  code: MyString
+  name: MyString
+  essetype: 1
+  status: 1
+
+two:
+  casework: two
+  code: MyString
+  name: MyString
+  essetype: 1
+  status: 1

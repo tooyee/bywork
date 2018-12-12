@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180918145603) do
+ActiveRecord::Schema.define(version: 20181212123647) do
 
   create_table "casedeals", force: :cascade do |t|
     t.string "name"
@@ -54,6 +54,54 @@ ActiveRecord::Schema.define(version: 20180918145603) do
     t.index ["flowitem_id"], name: "index_caseitems_on_flowitem_id"
   end
 
+  create_table "caseworkesselinemags", force: :cascade do |t|
+    t.integer "casework_id"
+    t.integer "esse_id"
+    t.string "code"
+    t.string "name"
+    t.integer "esselinetype"
+    t.text "remarks"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casework_id"], name: "index_caseworkesselinemags_on_casework_id"
+    t.index ["esse_id"], name: "index_caseworkesselinemags_on_esse_id"
+  end
+
+  create_table "caseworkesselines", force: :cascade do |t|
+    t.integer "casework_id"
+    t.integer "caseitem_id"
+    t.integer "esse_id"
+    t.integer "esseline_id"
+    t.string "esselinecode"
+    t.string "esselinename"
+    t.integer "quantity"
+    t.text "unit"
+    t.text "remarks"
+    t.date "begindate"
+    t.date "enddate"
+    t.integer "fromwhscode"
+    t.integer "towhscode"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caseitem_id"], name: "index_caseworkesselines_on_caseitem_id"
+    t.index ["casework_id"], name: "index_caseworkesselines_on_casework_id"
+    t.index ["esse_id"], name: "index_caseworkesselines_on_esse_id"
+    t.index ["esseline_id"], name: "index_caseworkesselines_on_esseline_id"
+  end
+
+  create_table "caseworkessemags", force: :cascade do |t|
+    t.integer "casework_id"
+    t.string "code"
+    t.string "name"
+    t.integer "essetype"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casework_id"], name: "index_caseworkessemags_on_casework_id"
+  end
+
   create_table "caseworklines", force: :cascade do |t|
     t.integer "casework_id"
     t.integer "caseitem_id"
@@ -71,6 +119,31 @@ ActiveRecord::Schema.define(version: 20180918145603) do
     t.index ["caseitem_id"], name: "index_caseworklines_on_caseitem_id"
     t.index ["casework_id"], name: "index_caseworklines_on_casework_id"
     t.index ["esse_id"], name: "index_caseworklines_on_esse_id"
+  end
+
+  create_table "caseworkmanageesses", force: :cascade do |t|
+    t.integer "casework_id"
+    t.string "code"
+    t.string "name"
+    t.integer "essetype"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casework_id"], name: "index_caseworkmanageesses_on_casework_id"
+  end
+
+  create_table "caseworkmanageresselines", force: :cascade do |t|
+    t.integer "casework_id"
+    t.integer "esse_id"
+    t.string "code"
+    t.string "name"
+    t.integer "esselinetype"
+    t.text "remarks"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casework_id"], name: "index_caseworkmanageresselines_on_casework_id"
+    t.index ["esse_id"], name: "index_caseworkmanageresselines_on_esse_id"
   end
 
   create_table "caseworks", force: :cascade do |t|

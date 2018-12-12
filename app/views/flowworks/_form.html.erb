@@ -77,12 +77,12 @@
 <div class="field">
   <%= form.label :beforeunitwork_id,"before unitwork name" %>
   <%= form.select :beforeunitwork_id,
-  Flowwork.where(flowdeal_id: flowwork.flowdeal_id).all.collect {|p| [ p.unitwork.name, p.id ] } %>
+  Unitwork.all.collect {|p| [ p.name, p.id ] } %>
 </div>
 <div class="field">
   <%= form.label :afterunitwork_id,"after unitwork name" %>
   <%= form.select :afterunitwork_id,
-  Flowwork.where(flowdeal_id: flowwork.flowdeal_id).all.collect {|p| [ p.unitwork.name, p.id ] } %>
+  Unitwork.all.collect {|p| [ p.name, p.id ] } %>
 </div>
 
   <div class="actions">

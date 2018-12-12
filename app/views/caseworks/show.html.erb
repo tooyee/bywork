@@ -41,66 +41,231 @@
     </div>
   </div>
 
-  <div class="card-body text-first border-first">
-    <table class="table table-sm table-striped">
-     <thead class="thead-dark">
-      <tr>
-        <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
-        <th><p class="d-inline ">代码</p></th>
-        <th><p class="d-inline ">资源</p></th>
-        <th><p class="d-inline ">数量</p></th>
-        <th><p class="d-inline">价格</p></th>
-        <th><p class="d-inline ">合计</p></th>
-        <th><p class="p-0 d-none d-sm-inline ">成本价</p></th>
-        <th><p class="p-0 d-none d-sm-inline ">成本合计</p></th>
-        <th><p class="d-none d-sm-inline ">税率</p></th>
-        <th><p class="d-none d-sm-inline ">仓库</p></th>
-        <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
-      </tr>
-     </thead>
-
-     <tbody>
-      <% @casework.caseworklines.each do |caseworkline| %>
-       <tr>
-         <td>
-           <div class="d-inline">
-             <%= link_to caseworkline.esse.code, edit_casework_caseworkline_path(caseworkline.casework, caseworkline)  %>
-           </div>
-         </td>
-         <td><div class="d-inline"><%= caseworkline.esse.name %></div></td>
-         <td><div class="d-inline"><p class="text-right"><%= caseworkline.quantity %></p></div></td>
-         <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price) %></p></div></td>
-         <td><div class="d-inline"><p class="text-right"><%= number_to_currency(sprintf("%0.02f",caseworkline.price_total)) %></p></div></td>
-
-         <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost) %></p></div></td>
-         <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost_total) %></p></div></td>
-         <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.vatgroup %></p></div></td>
-         <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.whscode %></p></div></td>
-         <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.status %></p></div></td>
-
-       </tr>
-      <% end %>
-     </tbody>
-
-     <tfoot>
-      <tr >
-       <!-- <th scope="col"><div class="d-inline"></div></th> -->
-       <th scope="col"><div class="d-inline"><p>总计</p></div></th>
-       <th scope="col"><div class="d-inline"></div></th>
-       <th scope="col"><div class="d-inline"><p class="text-right"><%=  @casework.sum_quan_total %></p></div></th>
-       <th scope="col"><div class="d-inline"><p class="text-right"></p></div></th>
-       <th scope="col"><div class="d-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_price_total) %></p></div></th>
-       <th scope="col"><div class="d-none d-sm-inline"></div></th>
-       <th scope="col"><div class="d-none d-sm-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_cost_total) %></p></div></th>
-       <th scope="col"><div class="d-none d-sm-inline"></div></th>
-       <th scope="col"><div class="d-none d-sm-inline"></div></th>
-       <th scope="col"><div class="d-none d-sm-inline"></div></th>
 
 
-      </tr>
-     </tfoot>
-    </table>
-  </div>
+<div class="card-body ">
+  <!-- casedeal -->
+    <ul id="mytab" class="nav nav-tabs flex-sm-row">
+      <li  class="nav-item">
+        <a class="nav-link active show" href="#<%= "资源" %>" data-toggle="tab"><%= "资源" %></a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" href="#<%= "内容" %>" data-toggle="tab"><%= "内容" %></a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" href="#<%= "管理资源" %>" data-toggle="tab"><%= "管理资源" %></a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" href="#<%= "管理内容" %>" data-toggle="tab"><%= "管理内容" %></a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" href="#<%= "附件" %>" data-toggle="tab"><%= "附件" %></a>
+      </li>
+      <li  class="nav-item">
+        <a class="nav-link" href="#<%= "审批1" %>" data-toggle="tab"><%= "审批" %></a>
+      </li>
+    </ul><p></p>
+
+    <div class="tab-content">
+      <!-- 资源 -->
+      <div class="tab-pane active" id="资源">
+        <table class="table table-sm table-striped">
+         <thead class="thead-dark">
+          <tr>
+            <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+            <th><p class="d-inline ">代码</p></th>
+            <th><p class="d-inline ">资源</p></th>
+            <th><p class="d-inline ">数量</p></th>
+            <th><p class="d-inline">价格</p></th>
+            <th><p class="d-inline ">合计</p></th>
+            <th><p class="p-0 d-none d-sm-inline ">成本价</p></th>
+            <th><p class="p-0 d-none d-sm-inline ">成本合计</p></th>
+            <th><p class="d-none d-sm-inline ">税率</p></th>
+            <th><p class="d-none d-sm-inline ">仓库</p></th>
+            <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+          </tr>
+         </thead>
+
+         <tbody>
+          <% @casework.caseworklines.each do |caseworkline| %>
+           <tr>
+             <td>
+               <div class="d-inline">
+                 <%= link_to caseworkline.esse.code, edit_casework_caseworkline_path(caseworkline.casework, caseworkline)  %>
+               </div>
+             </td>
+             <td><div class="d-inline"><%= caseworkline.esse.name %></div></td>
+             <td><div class="d-inline"><p class="text-right"><%= caseworkline.quantity %></p></div></td>
+             <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price) %></p></div></td>
+             <td><div class="d-inline"><p class="text-right"><%= number_to_currency(sprintf("%0.02f",caseworkline.price_total)) %></p></div></td>
+
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost) %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost_total) %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.vatgroup %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.whscode %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.status %></p></div></td>
+
+           </tr>
+          <% end %>
+         </tbody>
+
+         <tfoot>
+          <tr >
+           <!-- <th scope="col"><div class="d-inline"></div></th> -->
+           <th scope="col"><div class="d-inline"><p>总计</p></div></th>
+           <th scope="col"><div class="d-inline"></div></th>
+           <th scope="col"><div class="d-inline"><p class="text-right"><%=  @casework.sum_quan_total %></p></div></th>
+           <th scope="col"><div class="d-inline"><p class="text-right"></p></div></th>
+           <th scope="col"><div class="d-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_price_total) %></p></div></th>
+           <th scope="col"><div class="d-none d-sm-inline"></div></th>
+           <th scope="col"><div class="d-none d-sm-inline"><p class="text-right"><%=  sprintf("%0.02f", @casework.sum_cost_total) %></p></div></th>
+           <th scope="col"><div class="d-none d-sm-inline"></div></th>
+           <th scope="col"><div class="d-none d-sm-inline"></div></th>
+           <th scope="col"><div class="d-none d-sm-inline"></div></th>
+
+
+          </tr>
+         </tfoot>
+        </table>
+      </div>
+      <!-- 内容 -->
+      <div class="tab-pane " id="内容">
+        <table class="table table-sm table-striped">
+         <thead class="thead-dark">
+          <tr>
+            <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+            <th><p class="d-inline ">代码</p></th>
+            <th><p class="d-inline ">资源</p></th>
+            <th><p class="d-inline ">内容</p></th>
+            <th><p class="d-inline ">数量</p></th>
+            <th><p class="d-inline ">单位</p></th>
+            <th><p class="d-inline ">说明</p></th>
+            <th><p class="p-0 d-none d-sm-inline ">开始</p></th>
+            <th><p class="p-0 d-none d-sm-inline ">结束</p></th>
+            <th><p class="d-none d-sm-inline ">从哪</p></th>
+            <th><p class="d-none d-sm-inline ">到哪</p></th>
+            <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+          </tr>
+         </thead>
+
+         <tbody>
+          <% @casework.caseworkesselines.each do |caseworkesselines| %>
+           <tr>
+             <td>
+               <div class="d-inline">
+                 <%= link_to caseworkesselines.esseline.code, edit_casework_caseworkesseline_path(caseworkesselines.casework, caseworkesselines)  %>
+               </div>
+             </td>
+             <td><div class="d-inline"><%= caseworkesselines.esse.name %></div></td>
+             <td><div class="d-inline"><%= caseworkesselines.esseline.name %></div></td>
+             <td><div class="d-inline"><p class="text-right"><%= caseworkesselines.quantity %></p></div></td>
+             <td><div class="d-inline"><p class="text-right"><%= caseworkesselines.unit %></p></div></td>
+             <td><div class="d-inline"><p class="text-right"><%= caseworkesselines.remarks %></p></div></td>
+
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkesselines.begindate %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkesselines.enddate %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkesselines.fromwhscode %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkesselines.towhscode %></p></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkesselines.status %></p></div></td>
+
+           </tr>
+          <% end %>
+         </tbody>
+
+         <tfoot>
+          <tr >
+
+          </tr>
+         </tfoot>
+        </table>
+      </div>
+      <!-- 管理资源 -->
+      <div class="tab-pane " id="管理资源">
+        <table class="table table-sm table-striped">
+         <thead class="thead-dark">
+          <tr>
+            <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+            <th><p class="d-inline ">代码</p></th>
+            <th><p class="d-inline ">名称</p></th>
+            <th><p class="d-inline ">类型</p></th>
+            <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+          </tr>
+         </thead>
+
+         <tbody>
+          <% @casework.caseworkessemags.each do |caseworkessemags| %>
+           <tr>
+             <td>
+               <div class="d-inline">
+                 <%= link_to caseworkessemags.code, edit_casework_caseworkessemag_path(caseworkessemags.casework, caseworkessemags)  %>
+               </div>
+             </td>
+             <!-- <td><div class="d-inline"><%= caseworkessemags.code %></div></td> -->
+             <td><div class="d-inline"><%= caseworkessemags.name %></div></td>
+            <td><div class="d-inline"><%= caseworkessemags.essetype %></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkessemags.status %></p></div></td>
+
+           </tr>
+          <% end %>
+         </tbody>
+
+         <tfoot>
+          <tr >
+
+
+          </tr>
+         </tfoot>
+        </table>
+      </div>
+      <!-- 管理内容 -->
+      <div class="tab-pane " id="管理内容">
+        <table class="table table-sm table-striped">
+         <thead class="thead-dark">
+          <tr>
+            <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+            <th><p class="d-inline ">代码</p></th>
+            <th><p class="d-inline ">名称</p></th>
+            <th><p class="d-inline ">类型</p></th>
+            <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+          </tr>
+         </thead>
+
+         <tbody>
+          <% @casework.caseworkesselinemags.each do |caseworkesselinemags| %>
+           <tr>
+             <td>
+               <div class="d-inline">
+                 <%= link_to caseworkesselinemags.code, edit_casework_caseworkesselinemag_path(caseworkesselinemags.casework, caseworkesselinemags)  %>
+               </div>
+             </td>
+             <!-- <td><div class="d-inline"><%= caseworkesselinemags.code %></div></td> -->
+             <td><div class="d-inline"><%= caseworkesselinemags.name %></div></td>
+            <td><div class="d-inline"><%= caseworkesselinemags.esselinetype %></div></td>
+             <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkesselinemags.status %></p></div></td>
+
+           </tr>
+          <% end %>
+         </tbody>
+
+         <tfoot>
+          <tr >
+
+
+          </tr>
+         </tfoot>
+        </table>
+      </div>
+      <div class="tab-pane " id="附件">
+        <p>hello 附件</p>
+      </div>
+      <div class="tab-pane " id="审批">
+        <p>hello 审批</p>
+      </div>
+    </div>
+
+
+</div>
+
 
   <div class="card-footer bg-transparent border-first">
     <div class="p-1 form-group row">

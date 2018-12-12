@@ -1,11 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Dutydeals</h1>
-
-<table>
-  <thead>
+<!-- header -->
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <h1>Dutydeals</h1>
+  </div>
+</div>
+<!-- body -->
+<div class="card-body text-first border-first">
+  <table class="table table-sm table-striped">
+   <thead class="thead-dark">
     <tr>
-      <th>Role</th>
+      <th>Role1</th>
+      <th>Id</th>
       <th>Flowitem</th>
       <th>Flowdeal</th>
       <th>Seltype</th>
@@ -14,26 +21,36 @@
       <th>Deltype</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+   </thead>
 
-  <tbody>
-    <% @dutydeals.each do |dutydeal| %>
-      <tr>
-        <td><%= dutydeal.dutyitem.role.name %></td>
-        <td><%= dutydeal.flowdeal.flowitem.name %></td>
-        <td><%= dutydeal.flowdeal.unitdeal.name %></td>
-        <td><%= dutydeal.seltype %></td>
-        <td><%= dutydeal.addtype %></td>
-        <td><%= dutydeal.updtype %></td>
-        <td><%= dutydeal.deltype %></td>
-        <td><%= link_to 'Show', dutydeal %></td>
-        <td><%= link_to 'Edit', edit_dutydeal_path(dutydeal) %></td>
-        <td><%= link_to 'Destroy', dutydeal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+   <tbody>
+     <% @dutydeals.each do |dutydeal| %>
+       <tr>
+         <td><%= dutydeal.dutyitem.role.name %></td>
+         <td><%= link_to dutydeal.id, edit_dutydeal_path(dutydeal) %></td>
+         <td><%=  dutydeal.flowdeal.flowitem.name %></td>
+         <td><%= link_to dutydeal.flowdeal.unitdeal.name, dutydeal %></td>
+         <td><%= dutydeal.seltype %></td>
+         <td><%= dutydeal.addtype %></td>
+         <td><%= dutydeal.updtype %></td>
+         <td><%= dutydeal.deltype %></td>
 
-<%= link_to 'New Dutydeal', new_dutydeal_path %>
+         <td><%= link_to 'Destroy', dutydeal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+   </tbody>
+
+   <tfoot>
+    <tr >
+
+    </tr>
+   </tfoot>
+  </table>
+</div>
+<!-- footer -->
+<div class="card-footer bg-transparent border-first">
+
+
+  <%= link_to 'New Dutydeal', new_dutydeal_path %>
+</div>

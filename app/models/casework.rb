@@ -1,6 +1,9 @@
 class Casework < ApplicationRecord
   belongs_to :caseflowwork
   has_many :caseworklines
+  has_many :caseworkesselines
+  has_many :caseworkessemags
+  has_many :caseworkesselinemags
   has_many :caseitems, :through => :caseworklines
 
   belongs_to(:buy,:class_name => 'Esse', :foreign_key=>'buyid' )

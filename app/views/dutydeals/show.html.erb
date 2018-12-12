@@ -1,34 +1,87 @@
 <p id="notice"><%= notice %></p>
+<!-- header -->
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <h1>dutydeal</h1>
+  </div>
+</div>
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <p>
+      <strong>Dutyitem:</strong>
+      <%= link_to @dutydeal.dutyitem.flowitem.name, dutyitem_path(@dutydeal.dutyitem) %>
+    </p>
 
-<p>
-  <strong>Dutyitem:</strong>
-  <%= @dutydeal.dutyitem %>
-</p>
+    <p>
+      <strong>Flowdeal:</strong>
+      <%= @dutydeal.flowdeal.unitdeal.name %>
+    </p>
 
-<p>
-  <strong>Flowdeal:</strong>
-  <%= @dutydeal.flowdeal %>
-</p>
+    <p>
+      <strong>Seltype:</strong>
+      <%= @dutydeal.seltype %>
+    </p>
 
-<p>
-  <strong>Seltype:</strong>
-  <%= @dutydeal.seltype %>
-</p>
+    <p>
+      <strong>Addtype:</strong>
+      <%= @dutydeal.addtype %>
+    </p>
 
-<p>
-  <strong>Addtype:</strong>
-  <%= @dutydeal.addtype %>
-</p>
+    <p>
+      <strong>Updtype:</strong>
+      <%= @dutydeal.updtype %>
+    </p>
 
-<p>
-  <strong>Updtype:</strong>
-  <%= @dutydeal.updtype %>
-</p>
+    <p>
+      <strong>Deltype:</strong>
+      <%= @dutydeal.deltype %>
+    </p>
+  </div>
+</div>
+<!-- body -->
+<div class="card-body text-first border-first">
+  <table class="table table-sm table-striped">
+   <thead class="thead-dark">
+    <tr>
 
-<p>
-  <strong>Deltype:</strong>
-  <%= @dutydeal.deltype %>
-</p>
+      <th>Dutywork Id</th>
 
-<%= link_to 'Edit', edit_dutydeal_path(@dutydeal) %> |
-<%= link_to 'Back', dutydeals_path %>
+      <th>Dutywork</th>
+      <th>Seltype</th>
+      <th>Addtype</th>
+      <th>Updtype</th>
+      <th>Deltype</th>
+      <th colspan="3"></th>
+    </tr>
+   </thead>
+
+   <tbody>
+     <% @dutydeal.dutyworks.each do |dutywork| %>
+       <tr>
+
+         <td><%= link_to dutywork.id, edit_dutywork_path(dutywork) %></td>
+
+         <td><%= link_to dutywork.flowwork.unitwork.name, dutywork %></td>
+         <td><%= dutywork.seltype %></td>
+         <td><%= dutywork.addtype %></td>
+         <td><%= dutywork.updtype %></td>
+         <td><%= dutywork.deltype %></td>
+
+         <td><%= link_to 'Destroy', dutywork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+   </tbody>
+
+   <tfoot>
+    <tr >
+
+    </tr>
+   </tfoot>
+  </table>
+</div>
+<!-- footer -->
+<div class="card-footer bg-transparent border-first">
+  <%= link_to 'Edit', edit_dutydeal_path(@dutydeal) %> |
+  <%= link_to 'Back', dutydeals_path %>
+  <%= link_to 'New Dutydeal', new_dutywork_path %>
+</div>

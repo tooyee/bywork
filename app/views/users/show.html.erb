@@ -4,7 +4,7 @@
 <div class="card-header bg-transparent border-first">
   <div class="card-block border-0">
     <p>
-    <strong>Name:</strong>
+    <strong>UserName:</strong>
     <%= @user.name %>
     </p>
     <p>
@@ -35,8 +35,8 @@
    <tbody>
     <% @user.roleconfigs.each do |roleconfigs| %>
      <tr>
-       <td><div class="d-inline"><%= link_to roleconfigs.role.id, roleconfigs.role %></div></td>
-       <td><div class="d-inline"><%= roleconfigs.role.name %></div></td>
+       <td><div class="d-inline"><%=  roleconfigs.role.id %></div></td>
+       <td><div class="d-inline"><%= link_to roleconfigs.role.name, roleconfigs.role %></div></td>
        <td><div class="d-inline"><%= roleconfigs.role.created_at %></div></td>
        <td><div class="d-inline"><%= roleconfigs.role.updated_at %></div></td>
 
@@ -62,5 +62,6 @@
 
   </div>
   <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+  <%= link_to 'Back', users_path %> |
+  <%= link_to 'New Roleconfig', new_roleconfig_path %>
 </div>

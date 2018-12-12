@@ -30,8 +30,8 @@
    <tbody>
      <% @users.each do |user| %>
        <tr>
-         <td><%= link_to user.id, user %></td>
-         <td><%= link_to user.name, edit_user_path(user) %></td>
+         <td><%= link_to user.id, edit_user_path(user) %></td>
+         <td><%= link_to user.name, user %></td>
          <td><% user.roleconfigs.each do |roles| %>
                    //<%= roles.role.name %>;
                    <% end %></td>
@@ -60,35 +60,3 @@
 </div>
 
 <br>
-
-<!-- header -->
-<div class="card-header bg-transparent border-first">
-  <div class="card-block border-0">
-
-  </div>
-</div>
-<!-- body -->
-<div class="card-body text-first border-first">
-  <table class="table table-sm table-striped">
-   <thead class="thead-dark">
-    <tr>
-
-    </tr>
-   </thead>
-
-   <tbody>
-
-   </tbody>
-
-   <tfoot>
-    <tr >
-
-    </tr>
-   </tfoot>
-  </table>
-</div>
-<!-- footer -->
-<div class="card-footer bg-transparent border-first">
-
-
-</div>

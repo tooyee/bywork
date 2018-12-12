@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Dutyitems</h1>
-
 <!-- <%= check_box_tag(:pet_dog) %>
 <%= label_tag(:pet_dog, "I own a dog") %>
 <%= check_box_tag(:pet_cat) %>
@@ -29,10 +27,19 @@
 <%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %>
 <%= range_field(:product, :discount, in: 1..100) %>
 <p></p> -->
-<table>
-  <thead>
+<!-- header -->
+<div class="card-header bg-transparent border-first">
+  <div class="card-block border-0">
+    <h1>Dutyitems</h1>
+  </div>
+</div>
+<!-- body -->
+<div class="card-body text-first border-first">
+  <table class="table table-sm table-striped">
+   <thead class="thead-dark">
     <tr>
       <th>Role</th>
+      <th>Id</th>
       <th>Flowitem</th>
       <th>Seltype</th>
       <th>Addtype</th>
@@ -40,26 +47,46 @@
       <th>Deltype</th>
       <th colspan="3"></th>
     </tr>
+   </thead>
+
+   <tbody>
+     <% @dutyitems.each do |dutyitem| %>
+       <tr>
+         <td><%= dutyitem.role.name %></td>
+         <td><%= link_to dutyitem.id, edit_dutyitem_path(dutyitem) %></td>
+         <td><%= link_to dutyitem.flowitem.name, dutyitem %></td>
+         <td><%= dutyitem.seltype %></td>
+         <td><%= dutyitem.addtype %></td>
+         <td><%= dutyitem.updtype %></td>
+         <td><%= dutyitem.deltype %></td>
+         <td><%= link_to 'Destroy', dutyitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+   </tbody>
+
+   <tfoot>
+    <tr >
+
+    </tr>
+   </tfoot>
+  </table>
+</div>
+<!-- footer -->
+<div class="card-footer bg-transparent border-first">
+<%= link_to 'New Dutyitem', new_dutyitem_path %>
+
+</div>
+
+<table>
+  <thead>
+    <tr>
+
+    </tr>
   </thead>
 
   <tbody>
-    <% @dutyitems.each do |dutyitem| %>
-      <tr>
-        <td><%= dutyitem.role.name %></td>
-        <td><%= dutyitem.flowitem.name %></td>
-        <td><%= dutyitem.seltype %></td>
-        <td><%= dutyitem.addtype %></td>
-        <td><%= dutyitem.updtype %></td>
-        <td><%= dutyitem.deltype %></td>
-        <td><%= link_to 'Show1', dutyitem %></td>
-        <td><%= link_to 'Edit', edit_dutyitem_path(dutyitem) %></td>
-        <td><%= link_to 'Destroy', dutyitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+
   </tbody>
 </table>
 
 <br>
-<%= render "dutydeal", collection: @dutydeals, locals: {dutyitem_select_id: 1} %>
-
-<%= link_to 'New Dutyitem', new_dutyitem_path %>

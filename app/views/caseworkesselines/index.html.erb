@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caseworkesselines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Casework</th>
+      <th>Caseitem</th>
+      <th>Esse</th>
+      <th>Esseline</th>
+      <th>Esselinecode</th>
+      <th>Esselinename</th>
+      <th>Quantity</th>
+      <th>Unit</th>
+      <th>Remarks</th>
+      <th>Fromwhscode</th>
+      <th>Towhscode</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caseworkesselines.each do |caseworkesseline| %>
+      <tr>
+        <td><%= caseworkesseline.casework %></td>
+        <td><%= caseworkesseline.caseitem %></td>
+        <td><%= caseworkesseline.esse %></td>
+        <td><%= caseworkesseline.esseline %></td>
+        <td><%= caseworkesseline.esselinecode %></td>
+        <td><%= caseworkesseline.esselinename %></td>
+        <td><%= caseworkesseline.quantity %></td>
+        <td><%= caseworkesseline.unit %></td>
+        <td><%= caseworkesseline.remarks %></td>
+        <td><%= caseworkesseline.fromwhscode %></td>
+        <td><%= caseworkesseline.towhscode %></td>
+        <td><%= caseworkesseline.status %></td>
+        <td><%= link_to 'Show', caseworkesseline %></td>
+        <td><%= link_to 'Edit', edit_caseworkesseline_path(caseworkesseline) %></td>
+        <td><%= link_to 'Destroy', caseworkesseline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caseworkesseline', new_caseworkesseline_path %>

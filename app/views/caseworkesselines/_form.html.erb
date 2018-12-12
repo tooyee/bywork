@@ -1,0 +1,87 @@
+<%= form_with(model: caseworkesseline, local: true) do |form| %>
+  <% if caseworkesseline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(caseworkesseline.errors.count, "error") %> prohibited this caseworkesseline from being saved:</h2>
+
+      <ul>
+      <% caseworkesseline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :casework_id %>
+    <%= form.text_field :casework_id, id: :caseworkesseline_casework_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caseitem_id %>
+    <%= form.text_field :caseitem_id, id: :caseworkesseline_caseitem_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esse_id %>
+    <%= form.text_field :esse_id, id: :caseworkesseline_esse_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esseline_id %>
+    <%= form.text_field :esseline_id, id: :caseworkesseline_esseline_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esselinecode %>
+    <%= form.text_field :esselinecode, id: :caseworkesseline_esselinecode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :esselinename %>
+    <%= form.text_field :esselinename, id: :caseworkesseline_esselinename %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, id: :caseworkesseline_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unit %>
+    <%= form.text_area :unit, id: :caseworkesseline_unit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks, id: :caseworkesseline_remarks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :begindate %>
+    <%= form.date_field :begindate, id: :caseworkesseline_begindate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enddate %>
+    <%= form.date_field :enddate, id: :caseworkesseline_enddate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fromwhscode %>
+    <%= form.number_field :fromwhscode, id: :caseworkesseline_fromwhscode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :towhscode %>
+    <%= form.number_field :towhscode, id: :caseworkesseline_towhscode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :caseworkesseline_status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

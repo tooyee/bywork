@@ -1,10 +1,11 @@
-<p>dutydeal</p>
+<%# <%= render "dutydeal", collection: @dutydeals, locals: {dutyitem_select_id: 1} %> %>
+<p>dutydeal,</p>
 
 
 <table>
   <thead>
     <tr>
-      <th>Role</th>
+      <th>Role2</th>
       <th>Flowitem</th>
       <th>Flowdeal</th>
       <th>Seltype</th>
@@ -16,7 +17,7 @@
   </thead>
 
   <tbody>
-    <% Dutydeal.all.where(dutyitem_id: 1).each do |dutydeal| %>
+    <% Dutydeal.all.where(dutyitem_id: 2).each do |dutydeal| %>
       <tr>
         <td><%= dutydeal.dutyitem.role.name %></td>
         <td><%= dutydeal.flowdeal.flowitem.name %></td>

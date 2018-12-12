@@ -1,0 +1,42 @@
+<%= form_with(model: caseworkessemag, local: true) do |form| %>
+  <% if caseworkessemag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(caseworkessemag.errors.count, "error") %> prohibited this caseworkessemag from being saved:</h2>
+
+      <ul>
+      <% caseworkessemag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :casework_id %>
+    <%= form.text_field :casework_id, id: :caseworkessemag_casework_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :caseworkessemag_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :caseworkessemag_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :essetype %>
+    <%= form.number_field :essetype, id: :caseworkessemag_essetype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :caseworkessemag_status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

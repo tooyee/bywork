@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  casework: one
+  caseitem: one
+  esse: one
+  esseline: one
+  esselinecode: MyString
+  esselinename: MyString
+  quantity: 1
+  unit: MyText
+  remarks: MyText
+  fromwhscode: 1
+  towhscode: 1
+  status: 1
+
+two:
+  casework: two
+  caseitem: two
+  esse: two
+  esseline: two
+  esselinecode: MyString
+  esselinename: MyString
+  quantity: 1
+  unit: MyText
+  remarks: MyText
+  fromwhscode: 1
+  towhscode: 1
+  status: 1

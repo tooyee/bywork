@@ -11,12 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :role_name %>
+  <!-- header -->
+  <div class="card-header bg-transparent border-first">
+    <div class="card-block border-0">
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :role_name %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
 <% end %>
