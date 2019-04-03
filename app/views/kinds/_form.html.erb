@@ -1,0 +1,47 @@
+<%= form_with(model: kind, local: true) do |form| %>
+  <% if kind.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(kind.errors.count, "error") %> prohibited this kind from being saved:</h2>
+
+      <ul>
+      <% kind.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :casework_id %>
+    <%= form.text_field :casework_id, id: :kind_casework_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code, id: :kind_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :kind_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks, id: :kind_remarks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kindtype %>
+    <%= form.number_field :kindtype, id: :kind_kindtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :kind_status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

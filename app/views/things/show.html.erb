@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Casework:</strong>
+  <%= @thing.casework %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @thing.kind %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @thing.code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @thing.name %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @thing.remarks %>
+</p>
+
+<p>
+  <strong>Thingtype:</strong>
+  <%= @thing.thingtype %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @thing.status %>
+</p>
+
+<%= link_to 'Edit', edit_thing_path(@thing) %> |
+<%= link_to 'Back', things_path %>

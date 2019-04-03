@@ -19,8 +19,8 @@
   <tbody>
     <% @caseworkesselinemags.each do |caseworkesselinemag| %>
       <tr>
-        <td><%= caseworkesselinemag.casework %></td>
-        <td><%= caseworkesselinemag.esse %></td>
+        <td><%= caseworkesselinemag.casework.id %></td>
+        <td><%= caseworkesselinemag.esse.id %></td>
         <td><%= caseworkesselinemag.code %></td>
         <td><%= caseworkesselinemag.name %></td>
         <td><%= caseworkesselinemag.esselinetype %></td>

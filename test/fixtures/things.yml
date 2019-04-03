@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  casework: one
+  kind: one
+  code: MyString
+  name: MyString
+  remarks: MyText
+  thingtype: 1
+  status: 1
+
+two:
+  casework: two
+  kind: two
+  code: MyString
+  name: MyString
+  remarks: MyText
+  thingtype: 1
+  status: 1

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :things
+  resources :kinds
   resources :caseworkesselinemags
   resources :caseworkessemags
   resources :caseworkesselines

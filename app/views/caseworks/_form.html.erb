@@ -140,7 +140,11 @@
        </tfoot>
 
       </table>
+      <div class="card-footer bg-transparent border-first">
+        <%= render "caseworks/caseworkline" %>
+      </div>
     </div>
+
 
     <div class="card-footer bg-transparent border-first">
       <div class="p-1 form-group row">
@@ -151,16 +155,14 @@
             Esse.all.collect {|p| [ p.name, p.id ] } %>
           </p>
         </div>
+
         <div class="col-sm-4">
           <p>
-            <%= form.label :remarks %>
-            <%= form.text_area :remarks, id: :casework_remarks %>
+            <%= form.label :备注 %>
+            <%= form.text_field :remarks %>
           </p>
         </div>
-        <label class="col-sm-2 col-form-label">备注</label>
-        <div class="col-sm-9">
-          <%= form.text_field :remarks %>
-        </div>
+
       </div>
       <div class="actions">
         <%= form.submit %>

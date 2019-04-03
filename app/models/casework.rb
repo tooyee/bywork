@@ -2,6 +2,12 @@ class Casework < ApplicationRecord
   belongs_to :caseflowwork
   has_many :caseworklines
   has_many :caseworkesselines
+
+  has_many :kinds
+  has_many :things
+
+  has_many :esses
+
   has_many :caseworkessemags
   has_many :caseworkesselinemags
   has_many :caseitems, :through => :caseworklines

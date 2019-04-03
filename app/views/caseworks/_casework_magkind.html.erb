@@ -1,0 +1,35 @@
+<table class="table table-sm table-striped">
+ <thead class="thead-dark">
+  <tr>
+    <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+    <th><p class="d-inline ">代码</p></th>
+    <th><p class="d-inline ">名称</p></th>
+    <th><p class="d-inline ">类型</p></th>
+    <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+  </tr>
+ </thead>
+
+ <tbody>
+  <% @casework.kinds.each do |caseworkessemags| %>
+   <tr>
+     <td>
+       <div class="d-inline">
+         <%= link_to caseworkessemags.code, edit_casework_caseworkessemag_path(caseworkessemags.casework, caseworkessemags)  %>
+       </div>
+     </td>
+     <!-- <td><div class="d-inline"><%= caseworkessemags.code %></div></td> -->
+     <td><div class="d-inline"><%= caseworkessemags.name %></div></td>
+    <td><div class="d-inline"><%= caseworkessemags.kindtype %></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkessemags.status %></p></div></td>
+
+   </tr>
+  <% end %>
+ </tbody>
+
+ <tfoot>
+  <tr >
+
+
+  </tr>
+ </tfoot>
+</table>

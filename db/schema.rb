@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212123647) do
+ActiveRecord::Schema.define(version: 20190403163805) do
 
   create_table "casedeals", force: :cascade do |t|
     t.string "name"
@@ -121,31 +121,6 @@ ActiveRecord::Schema.define(version: 20181212123647) do
     t.index ["esse_id"], name: "index_caseworklines_on_esse_id"
   end
 
-  create_table "caseworkmanageesses", force: :cascade do |t|
-    t.integer "casework_id"
-    t.string "code"
-    t.string "name"
-    t.integer "essetype"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["casework_id"], name: "index_caseworkmanageesses_on_casework_id"
-  end
-
-  create_table "caseworkmanageresselines", force: :cascade do |t|
-    t.integer "casework_id"
-    t.integer "esse_id"
-    t.string "code"
-    t.string "name"
-    t.integer "esselinetype"
-    t.text "remarks"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["casework_id"], name: "index_caseworkmanageresselines_on_casework_id"
-    t.index ["esse_id"], name: "index_caseworkmanageresselines_on_esse_id"
-  end
-
   create_table "caseworks", force: :cascade do |t|
     t.string "code"
     t.string "name"
@@ -222,6 +197,8 @@ ActiveRecord::Schema.define(version: 20181212123647) do
     t.integer "essetype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "casework_id"
+    t.index ["casework_id"], name: "index_esses_on_casework_id"
   end
 
   create_table "flowdeals", force: :cascade do |t|
@@ -266,6 +243,18 @@ ActiveRecord::Schema.define(version: 20181212123647) do
     t.index ["unitwork_id"], name: "index_flowworks_on_unitwork_id"
   end
 
+  create_table "kinds", force: :cascade do |t|
+    t.integer "casework_id"
+    t.string "code"
+    t.string "name"
+    t.text "remarks"
+    t.integer "kindtype"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casework_id"], name: "index_kinds_on_casework_id"
+  end
+
   create_table "roleconfigs", force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
@@ -279,6 +268,20 @@ ActiveRecord::Schema.define(version: 20181212123647) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "things", force: :cascade do |t|
+    t.integer "casework_id"
+    t.integer "kind_id"
+    t.string "code"
+    t.string "name"
+    t.text "remarks"
+    t.integer "thingtype"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casework_id"], name: "index_things_on_casework_id"
+    t.index ["kind_id"], name: "index_things_on_kind_id"
   end
 
   create_table "unitdeals", force: :cascade do |t|
