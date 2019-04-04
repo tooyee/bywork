@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caseworklinekinds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Casework</th>
+      <th>Caseitem</th>
+      <th>Kind</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Cost</th>
+      <th>Vatgroup</th>
+      <th>Whscode</th>
+      <th>Status</th>
+      <th>Openqty</th>
+      <th>Baseid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caseworklinekinds.each do |caseworklinekind| %>
+      <tr>
+        <td><%= caseworklinekind.casework %></td>
+        <td><%= caseworklinekind.caseitem %></td>
+        <td><%= caseworklinekind.kind %></td>
+        <td><%= caseworklinekind.quantity %></td>
+        <td><%= caseworklinekind.price %></td>
+        <td><%= caseworklinekind.cost %></td>
+        <td><%= caseworklinekind.vatgroup %></td>
+        <td><%= caseworklinekind.whscode %></td>
+        <td><%= caseworklinekind.status %></td>
+        <td><%= caseworklinekind.openqty %></td>
+        <td><%= caseworklinekind.baseid %></td>
+        <td><%= link_to 'Show', caseworklinekind %></td>
+        <td><%= link_to 'Edit', edit_caseworklinekind_path(caseworklinekind) %></td>
+        <td><%= link_to 'Destroy', caseworklinekind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caseworklinekind', new_caseworklinekind_path %>

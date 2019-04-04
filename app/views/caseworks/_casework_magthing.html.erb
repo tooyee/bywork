@@ -10,17 +10,17 @@
  </thead>
 
  <tbody>
-  <% @casework.things.each do |caseworkessemags| %>
+  <% @casework.things.each do |things| %>
    <tr>
      <td>
        <div class="d-inline">
-         <%= link_to caseworkessemags.code, edit_casework_caseworkessemag_path(caseworkessemags.casework, caseworkessemags)  %>
+         <%= link_to things.code, edit_casework_thing_path(things.casework, things)  %>
        </div>
      </td>
-     <!-- <td><div class="d-inline"><%= caseworkessemags.code %></div></td> -->
-     <td><div class="d-inline"><%= caseworkessemags.name %></div></td>
-    <td><div class="d-inline"><%= caseworkessemags.thingtype %></div></td>
-     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkessemags.status %></p></div></td>
+     <!-- <td><div class="d-inline"><%= things.code %></div></td> -->
+     <td><div class="d-inline"><%= things.name %></div></td>
+    <td><div class="d-inline"><%= things.thingtype %></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= things.status %></p></div></td>
 
    </tr>
   <% end %>

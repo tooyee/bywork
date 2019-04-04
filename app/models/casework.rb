@@ -3,13 +3,15 @@ class Casework < ApplicationRecord
   has_many :caseworklines
   has_many :caseworkesselines
 
+  has_many :caseworklinekinds
+  has_many :caseworklinethings
+
   has_many :kinds
   has_many :things
 
   has_many :esses
 
-  has_many :caseworkessemags
-  has_many :caseworkesselinemags
+
   has_many :caseitems, :through => :caseworklines
 
   belongs_to(:buy,:class_name => 'Esse', :foreign_key=>'buyid' )
@@ -51,6 +53,38 @@ class Casework < ApplicationRecord
   def sum_vat_cost_total
     # line_items.to_a.sum { |item| item.total_price }
     caseworklines.to_a.sum { |caseworkline| caseworkline.vat_cost_total }
+  end
+
+#newkind
+
+  def sum_quan_total
+    # line_items.to_a.sum { |item| item.total_price }
+    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.quantity }
+  end
+
+  def sum_openqty_total
+    # line_items.to_a.sum { |item| item.total_price }
+    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.openqty }
+  end
+
+  def sum_price_total
+    # line_items.to_a.sum { |item| item.total_price }
+    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.price_total }
+  end
+
+  def sum_vat_price_total
+    # line_items.to_a.sum { |item| item.total_price }
+    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.vat_price_total }
+  end
+
+  def sum_cost_total
+    # line_items.to_a.sum { |item| item.total_price }
+    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.cost_total }
+  end
+
+  def sum_vat_cost_total
+    # line_items.to_a.sum { |item| item.total_price }
+    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.vat_cost_total }
   end
 
 

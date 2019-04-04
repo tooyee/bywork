@@ -1,0 +1,72 @@
+<%= form_with(model: caseworklinekind, local: true) do |form| %>
+  <% if caseworklinekind.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(caseworklinekind.errors.count, "error") %> prohibited this caseworklinekind from being saved:</h2>
+
+      <ul>
+      <% caseworklinekind.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :casework_id %>
+    <%= form.text_field :casework_id, id: :caseworklinekind_casework_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caseitem_id %>
+    <%= form.text_field :caseitem_id, id: :caseworklinekind_caseitem_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kind_id %>
+    <%= form.text_field :kind_id, id: :caseworklinekind_kind_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, id: :caseworklinekind_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :caseworklinekind_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.text_field :cost, id: :caseworklinekind_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vatgroup %>
+    <%= form.number_field :vatgroup, id: :caseworklinekind_vatgroup %>
+  </div>
+
+  <div class="field">
+    <%= form.label :whscode %>
+    <%= form.number_field :whscode, id: :caseworklinekind_whscode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :caseworklinekind_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :openqty %>
+    <%= form.number_field :openqty, id: :caseworklinekind_openqty %>
+  </div>
+
+  <div class="field">
+    <%= form.label :baseid %>
+    <%= form.number_field :baseid, id: :caseworklinekind_baseid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

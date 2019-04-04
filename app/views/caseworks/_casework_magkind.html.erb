@@ -10,17 +10,17 @@
  </thead>
 
  <tbody>
-  <% @casework.kinds.each do |caseworkessemags| %>
+  <% @casework.kinds.each do |kinds| %>
    <tr>
      <td>
        <div class="d-inline">
-         <%= link_to caseworkessemags.code, edit_casework_caseworkessemag_path(caseworkessemags.casework, caseworkessemags)  %>
+         <%= link_to kinds.code, edit_casework_kind_path(kinds.casework, kinds)  %>
        </div>
      </td>
-     <!-- <td><div class="d-inline"><%= caseworkessemags.code %></div></td> -->
-     <td><div class="d-inline"><%= caseworkessemags.name %></div></td>
-    <td><div class="d-inline"><%= caseworkessemags.kindtype %></div></td>
-     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkessemags.status %></p></div></td>
+     <!-- <td><div class="d-inline"><%= kinds.code %></div></td> -->
+     <td><div class="d-inline"><%= kinds.name %></div></td>
+    <td><div class="d-inline"><%= kinds.kindtype %></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= kinds.status %></p></div></td>
 
    </tr>
   <% end %>

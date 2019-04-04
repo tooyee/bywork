@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caseworklinethings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Casework</th>
+      <th>Caseitem</th>
+      <th>Kind</th>
+      <th>Thing</th>
+      <th>Thingcode</th>
+      <th>Thingname</th>
+      <th>Quantity</th>
+      <th>Unit</th>
+      <th>Remarks</th>
+      <th>Begindate</th>
+      <th>Enddate</th>
+      <th>Fromwhscode</th>
+      <th>Towhscode</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caseworklinethings.each do |caseworklinething| %>
+      <tr>
+        <td><%= caseworklinething.casework %></td>
+        <td><%= caseworklinething.caseitem %></td>
+        <td><%= caseworklinething.kind %></td>
+        <td><%= caseworklinething.thing %></td>
+        <td><%= caseworklinething.thingcode %></td>
+        <td><%= caseworklinething.thingname %></td>
+        <td><%= caseworklinething.quantity %></td>
+        <td><%= caseworklinething.unit %></td>
+        <td><%= caseworklinething.remarks %></td>
+        <td><%= caseworklinething.begindate %></td>
+        <td><%= caseworklinething.enddate %></td>
+        <td><%= caseworklinething.fromwhscode %></td>
+        <td><%= caseworklinething.towhscode %></td>
+        <td><%= caseworklinething.status %></td>
+        <td><%= link_to 'Show', caseworklinething %></td>
+        <td><%= link_to 'Edit', edit_caseworklinething_path(caseworklinething) %></td>
+        <td><%= link_to 'Destroy', caseworklinething, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caseworklinething', new_caseworklinething_path %>

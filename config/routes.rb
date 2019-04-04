@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
 
+  resources :caseworklinethings
+  resources :caseworklinekinds
   resources :things
   resources :kinds
-  resources :caseworkesselinemags
-  resources :caseworkessemags
+
   resources :caseworkesselines
   resources :dutyworks
   resources :dutydeals
@@ -39,13 +40,18 @@ Rails.application.routes.draw do
   resources :caseworks do
     resources :caseworklines
     resources :caseworkesselines
-    resources :caseworkessemags
-    resources :caseworkesselinemags
+
+
 
         # get 'clone', on: :member
     # get 'copyform', on: :member
   end
 
+
+  resources :caseworks do
+    resources :kinds
+    resources :things
+  end
   # get 'admin/index'
   #
   # get 'sessions/new'
