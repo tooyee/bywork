@@ -40,9 +40,11 @@ Rails.application.routes.draw do
   resources :caseworks do
     resources :caseworklines
     resources :caseworkesselines
+  end
 
-
-
+  resources :caseworks do
+    resources :caseworklinekinds
+    resources :caseworklinethings
         # get 'clone', on: :member
     # get 'copyform', on: :member
   end

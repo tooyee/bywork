@@ -1,0 +1,74 @@
+<%= form_for([@casework, @casework.caseworklinekinds.build]) do |form| %>
+<p id="notice"><%= notice %></p>
+<% if @casework.caseworklinekinds.build.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@casework.caseworklinekinds.build.errors.count, "error") %> prohibited this caseworklinekind from being saved:</h2>
+
+    <ul>
+    <% @casework.caseworklinekinds.build.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div type="hidden"  class="card-block">
+  <h6 class="card-title">类明细</h6>
+  <div class="d-flex flex-column flex-sm-row-2">
+    <div class="p-1 form-group row">
+      <div type="hidden" class="col-sm-4">
+        活动：<%= form.select :casework_id,
+        Casework.all.collect {|p| [ p.name, p.id ] } %>
+      </div>
+      <div class="col-sm-4 ">
+        项目：<%= form.select :caseitem_id,
+        Caseitem.all.collect {|p| [ p.name, p.id ] } %>
+      </div>
+      <div class="col-sm-4 ">
+        资源：<td class="rlcode"><%= form.select :kind_id,
+        Kind.all.collect {|p| [ p.name, p.id ] },
+                      prompt: "kind name" %>
+      </div>
+      <div class="col-sm-4 ">
+        数量：<td class="rlquan"><%= form.number_field :quantity, id: :resourcesline_quantity %></td>
+      </div>
+      <div class="col-sm-4 ">
+        价格：<td class="rlpric"><%= form.text_field :price, id: :resourcesline_price %></td>
+      </div>
+      <div class="col-sm-4 ">
+        成本：<td class="rlcost"><%= form.text_field :cost, id: :resourcesline_cost %></td>
+      </div>
+      <div class="col-sm-4 ">
+        税率：<td class="rlvatg"><%= form.select :vatgroup, Caseworkline.vatgroups.keys%></td>
+      </div>
+      <div class="col-sm-4 ">
+        仓库：<td class="rlwhsc"><%= form.number_field :whscode, id: :resourcesline_whscode %></td>
+      </div>
+      <div class="col-sm-4 ">
+        状态：<td class="rlstat"><%= form.select :status, Caseworkline.statuses.keys%></td>
+      </div>
+      <div class="col-sm-4 ">
+        未清：<td class="rlquan">
+          <%= form.number_field :openqty, id: :caseworkline_openqty %>
+        </td>
+      </div>
+      <div class="col-sm-4 ">
+        基础：<td class="rlquan">
+          <%= form.number_field :baseid, id: :caseworkline_baseid %>
+        </td>
+      </div>
+
+      <div class="col-sm-4 ">
+        <!-- <% form.submit %> -->
+        <!-- <button type="submit" class="btn btn-primary">新增行</button> -->
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

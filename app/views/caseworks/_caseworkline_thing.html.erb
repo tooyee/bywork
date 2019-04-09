@@ -1,0 +1,48 @@
+<table class="table table-sm table-striped">
+ <thead class="thead-dark">
+  <tr>
+    <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+    <th><p class="d-inline ">代码</p></th>
+    <th><p class="d-inline ">资源</p></th>
+    <th><p class="d-inline ">内容</p></th>
+    <th><p class="d-inline ">数量</p></th>
+    <th><p class="d-inline ">单位</p></th>
+    <th><p class="d-inline ">说明</p></th>
+    <th><p class="p-0 d-none d-sm-inline ">开始</p></th>
+    <th><p class="p-0 d-none d-sm-inline ">结束</p></th>
+    <th><p class="d-none d-sm-inline ">从哪</p></th>
+    <th><p class="d-none d-sm-inline ">到哪</p></th>
+    <th><p class="d-none d-sm-inline float-right float-none">状态</p></th>
+  </tr>
+ </thead>
+
+ <tbody>
+  <% @casework.caseworklinethings.each do |caseworklinething| %>
+   <tr>
+     <td>
+       <div class="d-inline">
+         <%= link_to caseworklinething.thing.code, edit_casework_caseworklinething_path(caseworklinething.casework, caseworklinething)  %>
+       </div>
+     </td>
+     <td><div class="d-inline"><%= caseworklinething.kind.name %></div></td>
+     <td><div class="d-inline"><%= caseworklinething.thing.name %></div></td>
+     <td><div class="d-inline"><p class="text-right"><%= caseworklinething.quantity %></p></div></td>
+     <td><div class="d-inline"><p class="text-right"><%= caseworklinething.unit %></p></div></td>
+     <td><div class="d-inline"><p class="text-right"><%= caseworklinething.remarks %></p></div></td>
+
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinething.begindate %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinething.enddate %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinething.fromwhscode %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinething.towhscode %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinething.status %></p></div></td>
+
+   </tr>
+  <% end %>
+ </tbody>
+
+ <tfoot>
+  <tr >
+
+  </tr>
+ </tfoot>
+</table>

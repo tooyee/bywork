@@ -2,7 +2,7 @@
  <thead class="thead-dark">
   <tr>
     <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
-    <th><p class="d-inline ">代码</p></th>
+    <th><p class="d-inline ">代码2</p></th>
     <th><p class="d-inline ">资源</p></th>
     <th><p class="d-inline ">数量</p></th>
     <th><p class="d-inline">价格</p></th>
@@ -16,23 +16,23 @@
  </thead>
 
  <tbody>
-  <% @casework.caseworklines.each do |caseworkline| %>
+  <% @casework.caseworklinekinds.each do |caseworklinekind| %>
    <tr>
      <td>
        <div class="d-inline">
-         <%= link_to caseworkline.esse.code, edit_casework_caseworkline_path(caseworkline.casework, caseworkline)  %>
+         <%= link_to caseworklinekind.kind.code, edit_casework_caseworklinekind_path(caseworklinekind.casework, caseworklinekind)  %>
        </div>
      </td>
-     <td><div class="d-inline"><%= caseworkline.esse.name %></div></td>
-     <td><div class="d-inline"><p class="text-right"><%= caseworkline.quantity %></p></div></td>
-     <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.price) %></p></div></td>
-     <td><div class="d-inline"><p class="text-right"><%= number_to_currency(sprintf("%0.02f",caseworkline.price_total)) %></p></div></td>
+     <td><div class="d-inline"><%= caseworklinekind.kind.name %></div></td>
+     <td><div class="d-inline"><p class="text-right"><%= caseworklinekind.quantity %></p></div></td>
+     <td><div class="d-inline"><p class="text-right"><%= sprintf("%0.02f",caseworklinekind.price) %></p></div></td>
+     <td><div class="d-inline"><p class="text-right"><%= number_to_currency(sprintf("%0.02f",caseworklinekind.price_total)) %></p></div></td>
 
-     <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost) %></p></div></td>
-     <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworkline.cost_total) %></p></div></td>
-     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.vatgroup %></p></div></td>
-     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.whscode %></p></div></td>
-     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworkline.status %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworklinekind.cost) %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= sprintf("%0.02f",caseworklinekind.cost_total) %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinekind.vatgroup %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinekind.whscode %></p></div></td>
+     <td><div class="d-none d-sm-inline"><p class="text-right"><%= caseworklinekind.status %></p></div></td>
 
    </tr>
   <% end %>

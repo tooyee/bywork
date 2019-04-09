@@ -3,6 +3,7 @@ class Caseworkline < ApplicationRecord
   belongs_to :caseitem
   belongs_to :esse
 
+
   enum vatgroup: {
   "17%"        => 1,
   "6%"         => 2,

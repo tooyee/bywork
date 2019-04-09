@@ -7,10 +7,11 @@
       <div class="card-block">
         <h6 class="card-title">
           <span class="btn-info btn-sm">
-            <%= link_to @casework.caseflowwork.casedeal.caseitem.name,
-            caseitem_path(@casework.caseflowwork.casedeal.caseitem) %>
+            <%= link_to @casework.caseflowwork.casedeal.caseitem.code,
+            caseitem_path(@casework.caseflowwork.casedeal.caseitem) %>-
+            <%=  @casework.caseflowwork.casedeal.caseitem.name %>
           </span>
-           - <%= @casework.caseflowwork.casedeal.name %> - <%= @casework.name %>:<%= @casework.id %>
+           - <%= @casework.caseflowwork.casedeal.name %> - <%= @casework.name %>-<%= @casework.id %>
         </h6>
         <h6 class="card-title">
           <% @casework.caseflowwork.casedeal.caseflowworks.each do |caseflowwork| %>
@@ -77,11 +78,11 @@
         <% if @casework.caseflowwork.subdealtype == 1 %>
           <!-- 资源 -->
           <div class="tab-pane active" id="资源">
-              <%= render "caseworks/caseworkline_esse" %>
+            <%= render "caseworks/caseworkline_kind" %>
           </div>
           <!-- 内容 -->
           <div class="tab-pane " id="内容">
-            <%= render "caseworks/caseworkline_esseline" %>
+            <%= render "caseworks/caseworkline_thing" %>
           </div>
         <% else %>
           <!-- 管理资源 -->
@@ -117,6 +118,7 @@
 
     </div>
     <%= link_to 'Edit', edit_casework_path(@casework) %> |
+    <%= link_to 'Edit', edit_casework_path(@casework) %> 
     <!-- <%= link_to 'Back', caseworks_path %> -->
     <%= link_to 'Back', caseitem_path(@casework.caseflowwork.casedeal.caseitem) %>
   </div>

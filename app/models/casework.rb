@@ -25,7 +25,7 @@ class Casework < ApplicationRecord
   }
   validates :status, inclusion: statuses.keys
 
-  def sum_quan_total
+  def sum_quan_total1
     # line_items.to_a.sum { |item| item.total_price }
     caseworklines.to_a.sum { |caseworkline| caseworkline.quantity }
   end
@@ -59,32 +59,32 @@ class Casework < ApplicationRecord
 
   def sum_quan_total
     # line_items.to_a.sum { |item| item.total_price }
-    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.quantity }
+    caseworklinekinds.to_a.sum { |caseworklinekind| caseworklinekind.quantity }
   end
 
   def sum_openqty_total
     # line_items.to_a.sum { |item| item.total_price }
-    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.openqty }
+    caseworklinekinds.to_a.sum { |caseworklinekind| caseworklinekind.openqty }
   end
 
   def sum_price_total
     # line_items.to_a.sum { |item| item.total_price }
-    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.price_total }
+    caseworklinekinds.to_a.sum { |caseworklinekind| caseworklinekind.price_total }
   end
 
   def sum_vat_price_total
     # line_items.to_a.sum { |item| item.total_price }
-    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.vat_price_total }
+    caseworklinekinds.to_a.sum { |caseworklinekind| caseworklinekind.vat_price_total }
   end
 
   def sum_cost_total
     # line_items.to_a.sum { |item| item.total_price }
-    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.cost_total }
+    caseworklinekinds.to_a.sum { |caseworklinekind| caseworklinekind.cost_total }
   end
 
   def sum_vat_cost_total
     # line_items.to_a.sum { |item| item.total_price }
-    caseworklinekinds.to_a.sum { |caseworkline| caseworklinekind.vat_cost_total }
+    caseworklinekinds.to_a.sum { |caseworklinekind| caseworklinekind.vat_cost_total }
   end
 
 
