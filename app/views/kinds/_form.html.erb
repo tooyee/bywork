@@ -41,7 +41,34 @@
     <%= form.number_field :status, id: :kind_status %>
   </div>
 
+<h2>Editing Things</h2>
+
   <div class="actions">
     <%= form.submit %>
   </div>
+  <%= form_for @kind do |f| %>
+
+    <ul>
+      <%= f.fields_for :things do |thing_form| %>
+        <li>
+          <%= thing_form.check_box :_destroy %>
+
+          <%= thing_form.label :casework_id %>
+          <%= thing_form.text_field :casework_id %>
+
+          <%= thing_form.label :kind_id %>
+          <%= thing_form.text_field :kind_id %>
+
+          <%= thing_form.label :code %>
+          <%= thing_form.text_field :code %>
+
+          <%= thing_form.label :name %>
+          <%= thing_form.text_field :name %>
+          ...
+        </li>
+      <% end %>
+    </ul>
+      <%= f.add_nested_fields_link :things  %>
+  <% end %>
+
 <% end %>

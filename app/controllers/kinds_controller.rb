@@ -15,10 +15,12 @@ class KindsController < ApplicationController
   # GET /kinds/new
   def new
     @kind = Kind.new
+    1.times { @kind.things.build}
   end
 
   # GET /kinds/1/edit
   def edit
+      1.times { @kind.things.build}
   end
 
   # POST /kinds
@@ -69,6 +71,9 @@ class KindsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kind_params
-      params.require(:kind).permit(:casework_id, :code, :name, :remarks, :kindtype, :status)
+      params.require(:kind).permit(:casework_id, :code, :name, :remarks, :kindtype, :status, things_attributes: [:id, :casework_id, :code, :name, :_destroy])
     end
+    # def person_params
+    # params.require(:person).permit(:name, addresses_attributes: [:id, :kind, :street])
+    # end
 end

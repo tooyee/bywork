@@ -19,6 +19,7 @@ class ThingsController < ApplicationController
 
   # GET /things/1/edit
   def edit
+    1.times { @kind.things.build}
   end
 
   # POST /things

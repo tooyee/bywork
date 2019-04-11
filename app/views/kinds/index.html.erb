@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Casework</th>
+        <th>Id</th>
       <th>Code</th>
       <th>Name</th>
       <th>Remarks</th>
@@ -18,7 +19,8 @@
   <tbody>
     <% @kinds.each do |kind| %>
       <tr>
-        <td><%= kind.casework %></td>
+        <td><%= kind.casework.name %></td>
+        <td><%= kind.id %></td>
         <td><%= kind.code %></td>
         <td><%= kind.name %></td>
         <td><%= kind.remarks %></td>

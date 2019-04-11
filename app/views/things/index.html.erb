@@ -19,8 +19,8 @@
   <tbody>
     <% @things.each do |thing| %>
       <tr>
-        <td><%= thing.casework %></td>
-        <td><%= thing.kind %></td>
+        <td><%= thing.casework.code %><%= thing.casework.name %></td>
+        <td><%= thing.kind.code %><%= thing.kind.name %></td>
         <td><%= thing.code %></td>
         <td><%= thing.name %></td>
         <td><%= thing.remarks %></td>

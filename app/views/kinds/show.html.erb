@@ -30,5 +30,42 @@
   <%= @kind.status %>
 </p>
 
+<div class="card-body text-first border-first">
+  <table class="table table-sm table-striped">
+   <thead class="thead-dark">
+    <tr>
+      <!-- <th scope="col"><div class="d-inline p-1">序</div></th> -->
+      <th><p class="d-inline ">id</p></th>
+      <th><p class="d-inline ">code</p></th>
+      <th><p class="d-inline ">name</p></th>
+      <th><p class="d-inline">updated_at</p></th>
+
+
+    </tr>
+   </thead>
+
+   <tbody>
+    <% @kind.things.each do |things| %>
+     <tr>
+       <td><div class="d-inline"><%=  things.id %></div></td>
+       <td><div class="d-inline"><%= link_to things.code, things %></div></td>
+       <td><div class="d-inline"><%= things.name %></div></td>
+       <td><div class="d-inline"><%= things.updated_at %></div></td>
+
+
+     </tr>
+    <% end %>
+   </tbody>
+
+   <tfoot>
+    <tr >
+
+
+
+    </tr>
+   </tfoot>
+  </table>
+</div>
+
 <%= link_to 'Edit', edit_kind_path(@kind) %> |
 <%= link_to 'Back', kinds_path %>
