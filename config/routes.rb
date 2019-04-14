@@ -36,6 +36,12 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
+  controller :kinds do
+    get  'addthing' => :addthing
+
+  end
+
+
 
   resources :caseworks do
     resources :caseworklines

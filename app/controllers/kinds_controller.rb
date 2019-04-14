@@ -15,12 +15,17 @@ class KindsController < ApplicationController
   # GET /kinds/new
   def new
     @kind = Kind.new
-    1.times { @kind.things.build}
+    1.times { @kind.things.build }
+  end
+
+  # GET addthing
+  def addthing
+       1.times { @kind.things.build }
   end
 
   # GET /kinds/1/edit
   def edit
-      1.times { @kind.things.build}
+       # 1.times { @kind.things.build}
   end
 
   # POST /kinds

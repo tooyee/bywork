@@ -68,7 +68,9 @@
         </li>
       <% end %>
     </ul>
-      <%= f.add_nested_fields_link :things  %>
+    <%# link_to 'Edit', edit_kind_path(kind) %>
+      <%= link_to '增行1', addthing_path(@kind)  %>
+      <%= button_to '增行', addthing_path, method: :addthing   %>
   <% end %>
 
 <% end %>
