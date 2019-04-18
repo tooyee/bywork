@@ -74,7 +74,7 @@
         </li>
       </ul><p></p>
 
-      <div class="tab-content">
+      <div class="tab-content"> 
         <% if @casework.caseflowwork.subdealtype == 1 %>
           <!-- 资源 -->
           <div class="tab-pane active" id="资源">
@@ -118,7 +118,7 @@
 
     </div>
     <%= link_to 'Edit', edit_casework_path(@casework) %> |
-    <%= link_to 'Edit', edit_casework_path(@casework) %> 
+    <%= link_to 'Edit', edit_casework_path(@casework) %>
     <!-- <%= link_to 'Back', caseworks_path %> -->
     <%= link_to 'Back', caseitem_path(@casework.caseflowwork.casedeal.caseitem) %>
   </div>

@@ -80,9 +80,15 @@
     <div class="card-body text-first border-first">
 
         <%= render "caseworks/caseworkline_kind" %>
+        
       <div class="card-footer bg-transparent border-first">
-        <%= render "caseworks/caseworkline_editkind" %>
-        <%= render "caseworks/caseworkline_editthing" %>
+        <% if @casework.caseflowwork.subdealtype == 1 %>
+          <%= render "caseworks/caseworkline_editkind" %>
+        <% else %>
+          <%= render "caseworks/caseworkline_editthing" %>
+        <% end %>
+
+
       </div>
     </div>
 
